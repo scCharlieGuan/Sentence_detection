@@ -1,0 +1,6 @@
+2026-07-28 18:22:33,866 - INFO - ALBERT epoch 1/6 train_loss=0.6937 val_loss=0.6113 val_pr_auc=0.3512 val_roc_auc=0.7028
+2026-07-28 18:22:48,614 - INFO - ALBERT epoch 2/6 train_loss=0.6027 val_loss=0.6244 val_pr_auc=0.3782 val_roc_auc=0.6851
+2026-07-28 18:23:03,378 - INFO - ALBERT epoch 3/6 train_loss=0.5208 val_loss=0.6296 val_pr_auc=0.3740 val_roc_auc=0.6761
+2026-07-28 18:23:18,768 - INFO - ALBERT epoch 4/6 train_loss=0.3757 val_loss=0.7050 val_pr_auc=0.3840 val_roc_auc=0.6742
+2026-07-28 18:23:34,280 - INFO - ALBERT epoch 5/6 train_loss=0.2546 val_loss=0.8254 val_pr_auc=0.3738 val_roc_auc=0.6530
+2026-07-28 18:23:50,307 - INFO - ALBERT epoch 6/6 train_loss=0.1522 val_loss=0.9068 val_pr_auc=0.3657 val_roc_auc=0.6529

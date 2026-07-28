@@ -127,6 +127,34 @@ ALBERT requires downloading Hugging Face weights on the first run unless the mod
 
 ## Run the pipeline
 
+For thesis experiments, prefer the question-grouped protocol. It keeps every
+answer to the same user question in one partition and writes to isolated
+`data/processed_question_grouped`, `models/thesis`, and `reports/thesis`
+directories:
+
+```bash
+python run_pipeline.py --config configs/thesis_protocol.yaml --mode prepare
+python run_pipeline.py --config configs/thesis_protocol.yaml --mode diagnose
+python run_pipeline.py --config configs/thesis_protocol.yaml --mode baselines --seeds 42,43,44,45,46
+python run_pipeline.py --config configs/thesis_protocol.yaml --mode train --model-name albert --loss weighted_cross_entropy --run-name albert_weighted_ce
+```
+
+Export paired prediction audits and statistical comparisons:
+
+```bash
+python run_pipeline.py --config configs/thesis_protocol.yaml --mode audit \
+  --prediction tfidf=reports/thesis/metrics/toxicity/tfidf_lr/test_predictions.csv \
+  --prediction albert=reports/thesis/metrics/toxicity/albert_weighted_ce/test_predictions.csv
+
+python run_pipeline.py --config configs/thesis_protocol.yaml --mode compare \
+  --prediction-a reports/thesis/metrics/toxicity/albert_weighted_ce/test_predictions.csv \
+  --prediction-b reports/thesis/metrics/toxicity/tfidf_lr/test_predictions.csv
+```
+
+Use `--seed 43` (and 44–46) to write independent runs under a seed-specific
+subdirectory without changing the persisted split. The full diagnosis and
+actual executed results are in `reports/thesis/ANALYSIS_REPORT.md`.
+
 Prepare weak labels and group-safe splits:
 
 ```bash

@@ -1,0 +1,13 @@
+{
+  "task": "toxicity",
+  "seed": 42,
+  "rows": 2848,
+  "responses": 372,
+  "dataset_sha256": "d1d4a52577f14edb1514e3865f37f8fd22ab198d9e4137d2b85d53e24c593077",
+  "split_sizes": {
+    "train": 1969,
+    "val": 462,
+    "test": 417
+  },
+  "test_is_model_selection_forbidden": true
+}

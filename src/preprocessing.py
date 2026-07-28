@@ -241,41 +241,58 @@ def build_sentence_dataset(frame: pd.DataFrame, task: Dict[str, Any], data_cfg: 
     grouped = work.groupby(["response_id", response_col], sort=False)
     for (response_id, response), group in tqdm(grouped, desc=f"Building {task['name']} labels"):
         sentences = split_sentences(response, nlp)
-        counts = np.zeros(len(sentences), dtype=int)
-        copies: List[str] = []
-        for value in group[target_col].tolist():
-            copies.extend(parse_copy_cell(value))
-        # Count unique copied spans so duplicated rows do not inflate annotator agreement.
-        unique_copies = list(dict.fromkeys(copy.lower() for copy in copies))
-        original_by_key = {copy.lower(): copy for copy in copies}
-        for key in unique_copies:
-            copy = original_by_key[key]
-            result = align_copy_to_sentences(
-                response, copy, sentences, nlp,
-                data_cfg["entire_response_values"],
-                float(data_cfg["fuzzy_threshold"]),
-                float(data_cfg["fuzzy_fallback_threshold"]),
-                float(data_cfg["min_overlap_ratio"]),
-                int(data_cfg["max_fuzzy_window"]),
-            )
-            for index in result["matched_indices"]:
-                counts[index] += 1
-            logs.append({
-                "response_id": response_id,
-                "task": task["name"],
-                "target_column": target_col,
-                "copy": copy,
-                "method": result["method"],
-                "score": result["score"],
-                "matched_indices": json.dumps(result["matched_indices"]),
-            })
+        # Agreement must count annotators, not copied fragments. Otherwise one
+        # annotator who supplies several overlapping fragments is counted more
+        # than once and can manufacture false consensus.
+        sentence_annotators: List[Set[str]] = [set() for _ in sentences]
+        for row_index, annotation in group.iterrows():
+            annotator_id = str(annotation.get("survey_id", row_index))
+            copies = parse_copy_cell(annotation[target_col])
+            annotator_matches: Set[int] = set()
+            for copy in copies:
+                result = align_copy_to_sentences(
+                    response, copy, sentences, nlp,
+                    data_cfg["entire_response_values"],
+                    float(data_cfg["fuzzy_threshold"]),
+                    float(data_cfg["fuzzy_fallback_threshold"]),
+                    float(data_cfg["min_overlap_ratio"]),
+                    int(data_cfg["max_fuzzy_window"]),
+                )
+                annotator_matches.update(result["matched_indices"])
+                logs.append({
+                    "response_id": response_id,
+                    "source_row_index": int(row_index),
+                    "annotator_id": annotator_id,
+                    "task": task["name"],
+                    "target_column": target_col,
+                    "copy": copy,
+                    "method": result["method"],
+                    "score": result["score"],
+                    "matched_indices": json.dumps(result["matched_indices"]),
+                })
+            for index in annotator_matches:
+                sentence_annotators[index].add(annotator_id)
+        counts = np.asarray([len(values) for values in sentence_annotators], dtype=int)
         labels = (counts >= int(data_cfg["min_positive_annotators"])).astype(int)
+        first = group.iloc[0]
+        metadata_columns = (
+            "questionID", "questionTitle", "questionText", "topic", "responder"
+        )
+        metadata = {
+            column: normalize_text(first[column])
+            for column in metadata_columns
+            if column in group.columns
+        }
         for sentence_id, (sentence, start, end) in enumerate(sentences):
             rows.append({
                 "response_id": response_id, "sentence_id": sentence_id,
                 "sentence": sentence, "start": start, "end": end,
                 "label": int(labels[sentence_id]), "match_count": int(counts[sentence_id]),
+                "positive_annotators": int(counts[sentence_id]),
+                "total_annotators": int(group["survey_id"].nunique())
+                if "survey_id" in group.columns else int(len(group)),
                 "response": response,
+                **metadata,
             })
     sentence_df = pd.DataFrame(rows)
     if sentence_df.empty:
@@ -294,22 +311,29 @@ def split_train_val_test(sentence_df: pd.DataFrame, data_cfg: Dict[str, Any], se
     Returns:
         Mapping from split name to sentence-row indices.
     """
-    response_df = sentence_df.groupby("response_id", as_index=False)["label"].max()
-    ids, labels = response_df["response_id"].to_numpy(), response_df["label"].to_numpy()
+    group_column = str(data_cfg.get("split_group_column", "response_id"))
+    if group_column not in sentence_df:
+        raise ValueError(f"Configured split_group_column is absent: {group_column}")
+    response_df = sentence_df.groupby(group_column, as_index=False)["label"].max()
+    ids, labels = response_df[group_column].to_numpy(), response_df["label"].to_numpy()
     stratify = labels if len(np.unique(labels)) > 1 and pd.Series(labels).value_counts().min() >= 2 else None
+    # first split the response groups into a training set and a temporary set for validation/test
+    # stratifying if possible
     train_ids, temp_ids = train_test_split(
         ids, test_size=float(data_cfg["validation_size"]) + float(data_cfg["test_size"]),
         random_state=seed, stratify=stratify,
     )
-    temp = response_df[response_df["response_id"].isin(temp_ids)]
+    # further split the temporary set into validation and test sets, stratifying if possible
+    temp = response_df[response_df[group_column].isin(temp_ids)]
     temp_labels = temp["label"].to_numpy()
     temp_stratify = temp_labels if len(np.unique(temp_labels)) > 1 and pd.Series(temp_labels).value_counts().min() >= 2 else None
     test_fraction = float(data_cfg["test_size"]) / (float(data_cfg["validation_size"]) + float(data_cfg["test_size"]))
     val_ids, test_ids = train_test_split(
-        temp["response_id"].to_numpy(), test_size=test_fraction,
+        temp[group_column].to_numpy(), test_size=test_fraction,
         random_state=seed + 1, stratify=temp_stratify,
     )
+
     return {
-        name: sentence_df.index[sentence_df["response_id"].isin(group_ids)].to_numpy()
+        name: sentence_df.index[sentence_df[group_column].isin(group_ids)].to_numpy()
         for name, group_ids in (("train", train_ids), ("val", val_ids), ("test", test_ids))
     }

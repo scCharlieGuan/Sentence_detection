@@ -34,23 +34,275 @@ data:
     - the whole response
 
 model:
+  # see load_config function in class AppConfig in src/config.py for alternative models
   name: tfidf_lr
+  input_mode: sentence
   pretrained_model_name: albert-base-v2
   sentence_transformer_name: BAAI/bge-base-en-v1.5
+  embedding_normalization: l2
+  class_weight: balanced
   num_labels: 2
-  max_length: 256
+  max_length: 128
   sbert_batch_size: 32
+  mlp_hidden_sizes: [128]
+  mlp_alpha: 0.001
+  mlp_max_iter: 300
 
 training:
   batch_size: 16
-  learning_rate: 2.0e-5
-  epochs: 3
+  learning_rate: 1.0e-5
+  encoder_learning_rate: 1.0e-5
+  head_learning_rate: 5.0e-5
+  epochs: 6
   weight_decay: 0.01
+  warmup_ratio: 0.10
+  gradient_accumulation_steps: 1
+  gradient_clip_norm: 1.0
+  mixed_precision: true
+  use_patience: true
   patience: 2
+  freeze_strategy: full
+  unfreeze_last_groups: 1
+  loss: cross_entropy
+  focal_gamma: 2.0
+  imbalance_method: none
   threshold_grid: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95]
-  primary_selection_metric: pr_auc_lift
-  train_final_on_train_val: true
-  class_weight: balanced
+  threshold_metric: f1
+  primary_selection_metric: pr_auc
+  train_final_on_train_val: false
+
+  # 例如每个句子原本所属的回答、文档或用户 ID。
+  # 没有该列时可以删除这一项。
+  # group_column: response_id
+
+  hyperparameter_tuning:
+    enabled: true
+
+    # Cross-validation
+    cv_folds: 5
+    scoring: "average_precision"
+    n_iter: 40
+
+    # Parallelism and reproducibility
+    n_jobs: -1
+    verbose: 1
+
+    grid_search_models:
+      - "tfidf_lr"
+      - "tfidf_linear_svm"
+      - "sbert_lr"
+
+    random_search_models:
+      - "sbert_lgbm"
+      - "sbert_extra_trees"
+
+    models:
+      tfidf_lr:
+        params:
+          tfidf__ngram_range:
+            - [1, 1]
+            - [1, 2]
+
+          tfidf__min_df:
+            - 2
+            - 5
+
+          tfidf__max_df:
+            - 0.95
+
+          tfidf__sublinear_tf:
+            - true
+
+          clf__C:
+            - 0.01
+            - 0.05
+            - 0.1
+            - 0.5
+            - 1.0
+            - 5.0
+            - 10.0
+
+          # clf__class_weight:
+          #   - null
+          #   - "balanced"
+
+      tfidf_linear_svm:
+        params:
+          tfidf__ngram_range:
+            - [1, 1]
+            - [1, 2]
+
+          tfidf__min_df:
+            - 2
+            - 5
+
+          tfidf__max_df:
+            - 0.95
+
+          tfidf__sublinear_tf:
+            - true
+
+          clf__estimator__C:
+            - 0.01
+            - 0.05
+            - 0.1
+            - 0.5
+            - 1.0
+            - 5.0
+            - 10.0
+
+          # clf__estimator__class_weight:
+          #   - null
+          #   - "balanced"
+
+      sbert_lr:
+        params:
+          # SBERT embeddings are dense and normalized, so only a relatively
+          # compact regularization search is normally necessary.
+          C:
+            - 0.001
+            - 0.01
+            - 0.05
+            - 0.1
+            - 0.5
+            - 1.0
+            - 5.0
+            - 10.0
+            - 50.0
+
+          # class_weight:
+          #   - null
+          #   - "balanced"
+
+      sbert_lgbm:
+        n_iter: 60
+
+        params:
+          # Number of boosting iterations.
+          n_estimators:
+            - 100
+            - 200
+            - 300
+            - 500
+            - 800
+
+          # Approximately logarithmic learning-rate range.
+          learning_rate:
+            - 0.005
+            - 0.01
+            - 0.02
+            - 0.05
+            - 0.10
+
+          # Controls leaf-wise model complexity.
+          num_leaves:
+            - 7
+            - 15
+            - 31
+            - 63
+
+          # Avoid excessively deep trees on a small embedding dataset.
+          max_depth:
+            - -1
+            - 3
+            - 5
+            - 8
+            - 12
+
+          # Larger values reduce overfitting.
+          min_child_samples:
+            - 10
+            - 20
+            - 40
+            - 80
+            - 120
+
+          # Row sampling. Requires subsample_freq > 0.
+          subsample:
+            - 0.60
+            - 0.75
+            - 0.90
+            - 1.00
+
+          subsample_freq:
+            - 1
+
+          # Feature sampling is useful for high-dimensional SBERT embeddings.
+          colsample_bytree:
+            - 0.50
+            - 0.70
+            - 0.85
+            - 1.00
+
+          # L1 regularization.
+          reg_alpha:
+            - 0.0
+            - 0.01
+            - 0.1
+            - 0.5
+            - 1.0
+            - 5.0
+
+          # L2 regularization.
+          reg_lambda:
+            - 0.0
+            - 0.01
+            - 0.1
+            - 0.5
+            - 1.0
+            - 5.0
+            - 10.0
+
+          # Suitable when the class distribution is imbalanced.
+          # class_weight:
+          #   - null
+          #   - "balanced"
+
+      sbert_extra_trees:
+        n_iter: 60
+
+        params:
+          n_estimators:
+            - 200
+            - 400
+            - 600
+            - 800
+            - 1000
+
+          # Number or proportion of features considered at each split.
+          max_features:
+            - "sqrt"
+            - "log2"
+            - 0.3
+            - 0.5
+            - 0.8
+            - 1.0
+
+          # Limits tree complexity and reduces overfitting.
+          min_samples_leaf:
+            - 1
+            - 2
+            - 4
+            - 8
+            - 16
+
+          min_samples_split:
+            - 2
+            - 5
+            - 10
+            - 20
+
+          max_depth:
+            - null
+            - 10
+            - 20
+            - 40
+            - 80
+          # class_weight:
+          #   - null
+          #   - "balanced"
+          #   - "balanced_subsample"
+
 
 output:
   model_dir: models

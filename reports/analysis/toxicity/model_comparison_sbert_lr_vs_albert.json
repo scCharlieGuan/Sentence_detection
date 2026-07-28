@@ -1,0 +1,23 @@
+{
+  "rows": 420,
+  "paired_bootstrap_pr_auc": {
+    "difference_a_minus_b": -0.010356599319506277,
+    "ci_low": -0.10200514461832516,
+    "ci_high": 0.07399761905238722,
+    "p_value": 0.761,
+    "valid_replicates": 2000
+  },
+  "paired_bootstrap_roc_auc": {
+    "difference_a_minus_b": -0.03944532667876599,
+    "ci_low": -0.09432112543611346,
+    "ci_high": 0.014959086491739458,
+    "p_value": 0.16,
+    "valid_replicates": 2000
+  },
+  "mcnemar_exact": {
+    "a_correct_b_wrong": 37,
+    "a_wrong_b_correct": 85,
+    "discordant": 122,
+    "p_value": 1.648964714977291e-05
+  }
+}

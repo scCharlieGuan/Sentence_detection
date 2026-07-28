@@ -1,0 +1,490 @@
+{
+  "negative_unigram": [
+    {
+      "feature": "or",
+      "weight": -0.7772481488917339
+    },
+    {
+      "feature": "support",
+      "weight": -0.7390742904503089
+    },
+    {
+      "feature": "and",
+      "weight": -0.7305199111608175
+    },
+    {
+      "feature": "remember",
+      "weight": -0.7061412393650084
+    },
+    {
+      "feature": "situation",
+      "weight": -0.507505265982202
+    },
+    {
+      "feature": "feelings",
+      "weight": -0.48380376429488114
+    },
+    {
+      "feature": "well",
+      "weight": -0.481549339130557
+    },
+    {
+      "feature": "any",
+      "weight": -0.47670717016207004
+    },
+    {
+      "feature": "make",
+      "weight": -0.4620544932239502
+    },
+    {
+      "feature": "emotions",
+      "weight": -0.4423473487997828
+    },
+    {
+      "feature": "relationships",
+      "weight": -0.43871772600929565
+    },
+    {
+      "feature": "can",
+      "weight": -0.4243721954775175
+    },
+    {
+      "feature": "your",
+      "weight": -0.41698233976957916
+    },
+    {
+      "feature": "hear",
+      "weight": -0.40463143010575453
+    },
+    {
+      "feature": "essential",
+      "weight": -0.403200024634616
+    },
+    {
+      "feature": "their",
+      "weight": -0.396131797643751
+    },
+    {
+      "feature": "consider",
+      "weight": -0.3847767898043985
+    },
+    {
+      "feature": "sorry",
+      "weight": -0.37522183261543574
+    },
+    {
+      "feature": "such",
+      "weight": -0.3750458665867605
+    },
+    {
+      "feature": "stress",
+      "weight": -0.3652613334671947
+    },
+    {
+      "feature": "alone",
+      "weight": -0.3636529843923374
+    },
+    {
+      "feature": "therapy",
+      "weight": -0.3551663629700977
+    },
+    {
+      "feature": "especially",
+      "weight": -0.35144888572105326
+    },
+    {
+      "feature": "safe",
+      "weight": -0.34242917531628725
+    },
+    {
+      "feature": "resources",
+      "weight": -0.3422871431328126
+    },
+    {
+      "feature": "emotional",
+      "weight": -0.3419680659373633
+    },
+    {
+      "feature": "counseling",
+      "weight": -0.3412508365327637
+    },
+    {
+      "feature": "re",
+      "weight": -0.3388045030475936
+    },
+    {
+      "feature": "change",
+      "weight": -0.3380557139423592
+    },
+    {
+      "feature": "step",
+      "weight": -0.3349868479968432
+    }
+  ],
+  "positive_unigram": [
+    {
+      "feature": "mother",
+      "weight": 1.1985953093291928
+    },
+    {
+      "feature": "the",
+      "weight": 1.1708181201445902
+    },
+    {
+      "feature": "she",
+      "weight": 1.1640247906929615
+    },
+    {
+      "feature": "his",
+      "weight": 1.1602948008399079
+    },
+    {
+      "feature": "really",
+      "weight": 1.1475216604941436
+    },
+    {
+      "feature": "relationship",
+      "weight": 1.1302102220399217
+    },
+    {
+      "feature": "reason",
+      "weight": 1.0993246839338384
+    },
+    {
+      "feature": "him",
+      "weight": 1.0859610858093782
+    },
+    {
+      "feature": "will",
+      "weight": 1.0443073734584176
+    },
+    {
+      "feature": "you",
+      "weight": 0.9465462048297055
+    },
+    {
+      "feature": "is",
+      "weight": 0.9178298490409221
+    },
+    {
+      "feature": "good",
+      "weight": 0.9083147455224541
+    },
+    {
+      "feature": "much",
+      "weight": 0.9050910089680329
+    },
+    {
+      "feature": "he",
+      "weight": 0.8047443426510426
+    },
+    {
+      "feature": "if",
+      "weight": 0.7938388060296615
+    },
+    {
+      "feature": "ll",
+      "weight": 0.785346041324817
+    },
+    {
+      "feature": "are",
+      "weight": 0.7705914628105363
+    },
+    {
+      "feature": "because",
+      "weight": 0.7525302511285893
+    },
+    {
+      "feature": "question",
+      "weight": 0.7408039664393813
+    },
+    {
+      "feature": "caring",
+      "weight": 0.717240246538991
+    },
+    {
+      "feature": "continue",
+      "weight": 0.7164985324731199
+    },
+    {
+      "feature": "need",
+      "weight": 0.7098756142788848
+    },
+    {
+      "feature": "there",
+      "weight": 0.7052614429519596
+    },
+    {
+      "feature": "all",
+      "weight": 0.6982233568008549
+    },
+    {
+      "feature": "part",
+      "weight": 0.666709756608447
+    },
+    {
+      "feature": "long",
+      "weight": 0.6556014294467505
+    },
+    {
+      "feature": "now",
+      "weight": 0.6420453727054083
+    },
+    {
+      "feature": "replace",
+      "weight": 0.638475500629553
+    },
+    {
+      "feature": "think",
+      "weight": 0.6131625773082569
+    },
+    {
+      "feature": "me",
+      "weight": 0.602005260113607
+    }
+  ],
+  "negative_bigram": [
+    {
+      "feature": "you re",
+      "weight": -0.40626401488026814
+    },
+    {
+      "feature": "with your",
+      "weight": -0.385656508806639
+    },
+    {
+      "feature": "remember that",
+      "weight": -0.3827874152566959
+    },
+    {
+      "feature": "to hear",
+      "weight": -0.3804367518822868
+    },
+    {
+      "feature": "sorry to",
+      "weight": -0.37144895956429197
+    },
+    {
+      "feature": "it okay",
+      "weight": -0.3667389128540606
+    },
+    {
+      "feature": "essential to",
+      "weight": -0.35032188411420906
+    },
+    {
+      "feature": "well being",
+      "weight": -0.3372785931150678
+    },
+    {
+      "feature": "it important",
+      "weight": -0.32821511116450186
+    },
+    {
+      "feature": "it essential",
+      "weight": -0.32415734414447017
+    },
+    {
+      "feature": "such as",
+      "weight": -0.31391929784176215
+    },
+    {
+      "feature": "and it",
+      "weight": -0.30552001997803824
+    },
+    {
+      "feature": "out to",
+      "weight": -0.2956638079088261
+    },
+    {
+      "feature": "of the",
+      "weight": -0.28806086349113624
+    },
+    {
+      "feature": "understandable that",
+      "weight": -0.2780334659662184
+    },
+    {
+      "feature": "to have",
+      "weight": -0.27325805758534155
+    },
+    {
+      "feature": "possible that",
+      "weight": -0.271176792147392
+    },
+    {
+      "feature": "like you",
+      "weight": -0.26866912854606545
+    },
+    {
+      "feature": "reach out",
+      "weight": -0.26806164374287517
+    },
+    {
+      "feature": "about your",
+      "weight": -0.26603652931599353
+    },
+    {
+      "feature": "not alone",
+      "weight": -0.2609910655954106
+    },
+    {
+      "feature": "sounds like",
+      "weight": -0.25998387578985943
+    },
+    {
+      "feature": "that you",
+      "weight": -0.2593178431756787
+    },
+    {
+      "feature": "it possible",
+      "weight": -0.25351232502751325
+    },
+    {
+      "feature": "emotions and",
+      "weight": -0.2528132084884312
+    },
+    {
+      "feature": "to take",
+      "weight": -0.25139075874422884
+    },
+    {
+      "feature": "re going",
+      "weight": -0.24760363620924747
+    },
+    {
+      "feature": "to seek",
+      "weight": -0.24551745104180284
+    },
+    {
+      "feature": "okay to",
+      "weight": -0.24136416311799228
+    },
+    {
+      "feature": "you deserve",
+      "weight": -0.23918922273434956
+    }
+  ],
+  "positive_bigram": [
+    {
+      "feature": "his mother",
+      "weight": 0.9797977737937874
+    },
+    {
+      "feature": "relationship with",
+      "weight": 0.7563049165983748
+    },
+    {
+      "feature": "with his",
+      "weight": 0.6931746708589424
+    },
+    {
+      "feature": "you and",
+      "weight": 0.6236146866021296
+    },
+    {
+      "feature": "to do",
+      "weight": 0.5959587904184621
+    },
+    {
+      "feature": "out there",
+      "weight": 0.5925165334009999
+    },
+    {
+      "feature": "right question",
+      "weight": 0.5824387295148932
+    },
+    {
+      "feature": "if you",
+      "weight": 0.5783145853113838
+    },
+    {
+      "feature": "no reason",
+      "weight": 0.5760779281945132
+    },
+    {
+      "feature": "too much",
+      "weight": 0.5591118393887335
+    },
+    {
+      "feature": "have positive",
+      "weight": 0.5262389949667579
+    },
+    {
+      "feature": "you are",
+      "weight": 0.5206499124575393
+    },
+    {
+      "feature": "that he",
+      "weight": 0.5187467214885709
+    },
+    {
+      "feature": "the best",
+      "weight": 0.5045000057014123
+    },
+    {
+      "feature": "because you",
+      "weight": 0.49656403077417655
+    },
+    {
+      "feature": "feeling insecure",
+      "weight": 0.49135756910204587
+    },
+    {
+      "feature": "not the",
+      "weight": 0.48717041909897435
+    },
+    {
+      "feature": "you will",
+      "weight": 0.48313173193140285
+    },
+    {
+      "feature": "we are",
+      "weight": 0.47907439842038785
+    },
+    {
+      "feature": "where you",
+      "weight": 0.4780278197183422
+    },
+    {
+      "feature": "to provide",
+      "weight": 0.4751736992055812
+    },
+    {
+      "feature": "chance to",
+      "weight": 0.4724395381575207
+    },
+    {
+      "feature": "wants to",
+      "weight": 0.46813245427460093
+    },
+    {
+      "feature": "will find",
+      "weight": 0.45920818035480276
+    },
+    {
+      "feature": "the key",
+      "weight": 0.4570396613548645
+    },
+    {
+      "feature": "and talk",
+      "weight": 0.45343553409249887
+    },
+    {
+      "feature": "how much",
+      "weight": 0.44825872331556277
+    },
+    {
+      "feature": "would ask",
+      "weight": 0.44140538928786355
+    },
+    {
+      "feature": "you you",
+      "weight": 0.42848011421196774
+    },
+    {
+      "feature": "with her",
+      "weight": 0.4271356230637944
+    }
+  ]
+}

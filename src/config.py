@@ -104,10 +104,28 @@ def load_config(config_path: str | Path) -> AppConfig:
 
     model_name = values["model"].get("name")
     supported_models = {
-        "tfidf_lr", "tfidf_linear_svm", "sbert_lr", "sbert_lgbm",
-        "sbert_extra_trees", "albert"
+        "tfidf_lr", "tfidf_word_lr", "tfidf_char_lr",
+        "tfidf_word_char_lr", "tfidf_linear_svm", "sbert_lr",
+        "sbert_linear_svm", "sbert_mlp", "sbert_lgbm",
+        "sbert_extra_trees", "albert",
     }
     if model_name not in supported_models:
         raise ValueError(f"Unsupported model '{model_name}'. Supported: {sorted(supported_models)}")
+
+    input_modes = {
+        "sentence", "previous_target", "target_next", "window", "response",
+        "question_target", "question_window",
+    }
+    input_mode = values["model"].get("input_mode", "sentence")
+    if input_mode not in input_modes:
+        raise ValueError(f"Unsupported model.input_mode '{input_mode}'.")
+
+    training = values["training"]
+    if training.get("primary_selection_metric", "pr_auc") not in {
+        "pr_auc", "roc_auc", "loss",
+    }:
+        raise ValueError("training.primary_selection_metric must be pr_auc, roc_auc, or loss.")
+    if training.get("threshold_metric", "f1") not in {"f0.5", "f1", "f2"}:
+        raise ValueError("training.threshold_metric must be f0.5, f1, or f2.")
 
     return AppConfig(root_dir=path.parent.parent, values=values)

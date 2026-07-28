@@ -10,7 +10,8 @@ from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import Pipeline
+from sklearn.neural_network import MLPClassifier
+from sklearn.pipeline import FeatureUnion, Pipeline
 from sklearn.svm import LinearSVC
 from transformers import AlbertForSequenceClassification, AlbertTokenizerFast
 
@@ -29,14 +30,46 @@ def build_model(model_name: str, model_cfg: Dict[str, Any], seed: int) -> Any:
     Raises:
         ValueError: If the model name is unsupported.
     """
-    if model_name == "tfidf_lr":
+    class_weight = model_cfg.get("class_weight", "balanced")
+    if class_weight == "none":
+        class_weight = None
+    if model_name in {"tfidf_lr", "tfidf_word_lr"}:
         return Pipeline([
             ("tfidf", TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True)),
-            ("clf", LogisticRegression(max_iter=3000, class_weight="balanced", solver="liblinear", random_state=seed)),
+            ("clf", LogisticRegression(max_iter=3000, class_weight=class_weight, solver="liblinear", random_state=seed)),
+        ])
+    if model_name == "tfidf_char_lr":
+        return Pipeline([
+            ("tfidf", TfidfVectorizer(
+                analyzer="char_wb", ngram_range=(3, 5), min_df=2,
+                max_features=100_000, sublinear_tf=True,
+            )),
+            ("clf", LogisticRegression(
+                max_iter=3000, class_weight=class_weight,
+                solver="liblinear", random_state=seed,
+            )),
+        ])
+    if model_name == "tfidf_word_char_lr":
+        features = FeatureUnion([
+            ("word", TfidfVectorizer(
+                analyzer="word", ngram_range=(1, 2), min_df=2,
+                max_df=0.95, sublinear_tf=True,
+            )),
+            ("char", TfidfVectorizer(
+                analyzer="char_wb", ngram_range=(3, 5), min_df=2,
+                max_features=100_000, sublinear_tf=True,
+            )),
+        ])
+        return Pipeline([
+            ("features", features),
+            ("clf", LogisticRegression(
+                max_iter=3000, class_weight=class_weight,
+                solver="liblinear", random_state=seed,
+            )),
         ])
     if model_name == "tfidf_linear_svm":
         calibrated = CalibratedClassifierCV(
-            LinearSVC(class_weight="balanced", random_state=seed, max_iter=5000),
+            LinearSVC(class_weight=class_weight, random_state=seed, max_iter=5000),
             cv=3, method="sigmoid",
         )
         return Pipeline([
@@ -44,7 +77,22 @@ def build_model(model_name: str, model_cfg: Dict[str, Any], seed: int) -> Any:
             ("clf", calibrated),
         ])
     if model_name == "sbert_lr":
-        return LogisticRegression(max_iter=3000, class_weight="balanced", solver="liblinear", random_state=seed)
+        return LogisticRegression(max_iter=3000, class_weight=class_weight, solver="liblinear", random_state=seed)
+    if model_name == "sbert_linear_svm":
+        return CalibratedClassifierCV(
+            LinearSVC(class_weight=class_weight, random_state=seed, max_iter=5000),
+            cv=3,
+            method="sigmoid",
+        )
+    if model_name == "sbert_mlp":
+        return MLPClassifier(
+            hidden_layer_sizes=tuple(model_cfg.get("mlp_hidden_sizes", [128])),
+            alpha=float(model_cfg.get("mlp_alpha", 1e-3)),
+            early_stopping=True,
+            validation_fraction=0.15,
+            max_iter=int(model_cfg.get("mlp_max_iter", 300)),
+            random_state=seed,
+        )
     if model_name == "sbert_lgbm":
         return LGBMClassifier(objective="binary", n_estimators=200, learning_rate=0.03, num_leaves=15, class_weight="balanced", random_state=seed, verbosity=-1)
     if model_name == "sbert_extra_trees":

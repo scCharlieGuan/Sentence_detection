@@ -1,0 +1,17 @@
+{
+  "model_name": "tfidf_lr",
+  "best_params": {
+    "clf__C": 0.01,
+    "tfidf__min_df": 5,
+    "tfidf__ngram_range": [
+      1,
+      2
+    ]
+  },
+  "enabled": true,
+  "search_method": "grid_search",
+  "scoring": "average_precision",
+  "cv_folds": 5,
+  "best_score": 0.37128950750085266,
+  "n_candidates": 16
+}

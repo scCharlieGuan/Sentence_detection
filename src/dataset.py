@@ -38,9 +38,13 @@ class TransformerTextDataset(Dataset):
         Returns:
             Model inputs with a labels tensor.
         """
+        # Padding is intentionally deferred to DataCollatorWithPadding so each
+        # batch is padded only to its longest sequence, reducing wasted memory.
         encoded = self.tokenizer(
-            self.texts[index], truncation=True, padding="max_length",
-            max_length=self.max_length, return_tensors="pt",
+            self.texts[index],
+            truncation=True,
+            max_length=self.max_length,
+            return_tensors="pt",
         )
         item = {key: value.squeeze(0) for key, value in encoded.items()}
         item["labels"] = torch.tensor(self.labels[index], dtype=torch.long)

@@ -1,0 +1,72 @@
+{
+  "model_name": "sbert_lr",
+  "input_mode": "sentence",
+  "seed": 42,
+  "best_params": {
+    "C": 1.0
+  },
+  "hyperparameter_tuning": {
+    "enabled": true,
+    "search_method": "grid_search",
+    "scoring": "average_precision",
+    "cv_folds": 5,
+    "best_score": 0.39440709782291417,
+    "best_params": {
+      "C": 1.0
+    },
+    "n_candidates": 4
+  },
+  "threshold": 0.6,
+  "threshold_metric": "f1",
+  "validation_threshold_score": 0.3867403314917127,
+  "validation_metrics": {
+    "accuracy": 0.7597402597402597,
+    "precision": 0.36082474226804123,
+    "recall": 0.4166666666666667,
+    "f1": 0.3867403314917127,
+    "f0.5": 0.3707627118644068,
+    "f2": 0.40415704387990764,
+    "macro_f1": 0.6186729921253988,
+    "roc_auc": 0.6649344923154447,
+    "pr_auc": 0.29094548709528223,
+    "prevalence": 0.18181818181818182,
+    "pr_auc_lift": 1.6002001790240523,
+    "threshold": 0.6,
+    "positive_prediction_rate": 0.20995670995670995,
+    "confusion_matrix": [
+      [
+        316,
+        62
+      ],
+      [
+        49,
+        35
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.7434052757793765,
+    "precision": 0.3541666666666667,
+    "recall": 0.43037974683544306,
+    "f1": 0.38857142857142857,
+    "f0.5": 0.367170626349892,
+    "f2": 0.41262135922330095,
+    "macro_f1": 0.6131021027530891,
+    "roc_auc": 0.6753801213392255,
+    "pr_auc": 0.3327738000245346,
+    "prevalence": 0.18944844124700239,
+    "pr_auc_lift": 1.756540184939632,
+    "threshold": 0.6,
+    "positive_prediction_rate": 0.2302158273381295,
+    "confusion_matrix": [
+      [
+        276,
+        62
+      ],
+      [
+        45,
+        34
+      ]
+    ]
+  }
+}
