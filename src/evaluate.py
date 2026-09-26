@@ -63,7 +63,9 @@ def classification_metrics(y_true: np.ndarray, probabilities: np.ndarray, thresh
         threshold: Classification threshold.
 
     Returns:
-        Metrics including PR-AUC and prevalence-normalized PR-AUC lift.
+        Metrics including Average Precision and prevalence-normalized AP lift.
+        The historical ``pr_auc`` key stores sklearn Average Precision, not
+        trapezoidal area under the precision-recall curve (Appendix B.5).
     """
     y_true = np.asarray(y_true, dtype=int)
     probabilities = np.asarray(probabilities, dtype=float)
@@ -133,6 +135,49 @@ def aggregate_seed_metrics(runs: Sequence[Mapping[str, float]]) -> Dict[str, Dic
             "values": values.tolist(),
         }
     return summary
+
+
+def bootstrap_metric_intervals(
+    y_true: np.ndarray,
+    probabilities: np.ndarray,
+    threshold: float,
+    n_bootstrap: int = 1000,
+    confidence: float = 0.95,
+    seed: int = 42,
+) -> Dict[str, Dict[str, float]]:
+    """Return percentile bootstrap CIs on one fixed test sample.
+
+    This estimates test-sample uncertainty, not model-training or split
+    uncertainty. Replicates containing one class are omitted for ranking metrics.
+    """
+    y_true = np.asarray(y_true, dtype=int)
+    probabilities = np.asarray(probabilities, dtype=float)
+    if len(y_true) != len(probabilities) or not len(y_true):
+        raise ValueError("Labels and probabilities must have the same non-zero length.")
+    metric_names = ("precision", "recall", "f1", "macro_f1", "pr_auc", "roc_auc")
+    samples: Dict[str, list[float]] = {name: [] for name in metric_names}
+    rng = np.random.default_rng(seed)
+    for _ in range(int(n_bootstrap)):
+        indices = rng.integers(0, len(y_true), len(y_true))
+        sampled_y = y_true[indices]
+        sampled_probability = probabilities[indices]
+        metrics = classification_metrics(sampled_y, sampled_probability, threshold)
+        for name in metric_names:
+            value = float(metrics[name])
+            if np.isfinite(value):
+                samples[name].append(value)
+    alpha = 1.0 - float(confidence)
+    output: Dict[str, Dict[str, float]] = {}
+    observed = classification_metrics(y_true, probabilities, threshold)
+    for name, values in samples.items():
+        array = np.asarray(values, dtype=float)
+        output[name] = {
+            "estimate": float(observed[name]),
+            "ci_low": float(np.quantile(array, alpha / 2)),
+            "ci_high": float(np.quantile(array, 1 - alpha / 2)),
+            "valid_replicates": int(len(array)),
+        }
+    return output
 
 
 def bootstrap_metric_difference(

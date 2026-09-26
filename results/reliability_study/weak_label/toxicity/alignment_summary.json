@@ -1,0 +1,287 @@
+{
+  "total_spans": 405,
+  "matched_spans": 361,
+  "matched_ratio": 0.891358024691358,
+  "unmatched_spans": 44,
+  "unmatched_ratio": 0.10864197530864197,
+  "fuzzy_spans": 100,
+  "fuzzy_cross_sentence_spans": 29,
+  "fuzzy_similarity_distribution": {
+    "min": 0.8421052631578947,
+    "p10": 1.0,
+    "median": 1.0,
+    "p90": 1.0,
+    "max": 1.0
+  },
+  "failure_reasons": {
+    "not_applicable": 361,
+    "below_fuzzy_fallback_threshold": 44
+  },
+  "source_score_by_alignment_method": {
+    "runner_up_score": {
+      "0.0": {
+        "exact": 252,
+        "all_response": 9,
+        "fuzzy": 2,
+        "unmatched": 2
+      },
+      "0.0257234726688102": {
+        "unmatched": 1
+      },
+      "0.0666666666666666": {
+        "unmatched": 1
+      },
+      "0.0833333333333333": {
+        "unmatched": 1
+      },
+      "0.2": {
+        "unmatched": 1
+      },
+      "0.2028985507246377": {
+        "unmatched": 1
+      },
+      "0.2222222222222222": {
+        "unmatched": 1
+      },
+      "0.2390438247011952": {
+        "unmatched": 1
+      },
+      "0.25": {
+        "unmatched": 2
+      },
+      "0.2631578947368421": {
+        "unmatched": 1
+      },
+      "0.2645502645502645": {
+        "unmatched": 1
+      },
+      "0.2666666666666666": {
+        "unmatched": 1
+      },
+      "0.2690909090909091": {
+        "unmatched": 1
+      },
+      "0.2705882352941176": {
+        "unmatched": 1
+      },
+      "0.2903225806451613": {
+        "unmatched": 1
+      },
+      "0.2941176470588235": {
+        "unmatched": 2
+      },
+      "0.2990654205607476": {
+        "unmatched": 1
+      },
+      "0.3043478260869565": {
+        "unmatched": 1
+      },
+      "0.3305785123966942": {
+        "unmatched": 1
+      },
+      "0.3317073170731707": {
+        "unmatched": 1
+      },
+      "0.3333333333333333": {
+        "unmatched": 4
+      },
+      "0.3354838709677419": {
+        "unmatched": 1
+      },
+      "0.3684210526315789": {
+        "unmatched": 1
+      },
+      "0.375": {
+        "unmatched": 2
+      },
+      "0.3846153846153846": {
+        "unmatched": 1
+      },
+      "0.4": {
+        "unmatched": 2
+      },
+      "0.4444444444444444": {
+        "unmatched": 2
+      },
+      "0.5": {
+        "unmatched": 2,
+        "fuzzy": 1
+      },
+      "0.5238095238095238": {
+        "unmatched": 1
+      },
+      "0.5256410256410257": {
+        "unmatched": 1
+      },
+      "0.5714285714285714": {
+        "unmatched": 1
+      },
+      "0.5871559633027523": {
+        "fuzzy": 1
+      },
+      "0.6428571428571429": {
+        "unmatched": 1
+      },
+      "0.6666666666666666": {
+        "unmatched": 2,
+        "fuzzy": 1
+      },
+      "0.68": {
+        "fuzzy": 1
+      },
+      "0.7083333333333334": {
+        "fuzzy": 1
+      },
+      "0.78125": {
+        "fuzzy": 1
+      },
+      "0.7894736842105263": {
+        "fuzzy": 1
+      },
+      "0.8571428571428571": {
+        "fuzzy": 1
+      },
+      "0.8666666666666667": {
+        "fuzzy": 1
+      },
+      "0.8787878787878788": {
+        "fuzzy": 1
+      },
+      "0.8888888888888888": {
+        "fuzzy": 1
+      },
+      "0.9": {
+        "fuzzy": 2
+      },
+      "0.9090909090909092": {
+        "fuzzy": 1
+      },
+      "0.9285714285714286": {
+        "fuzzy": 1
+      },
+      "0.9310344827586208": {
+        "fuzzy": 1
+      },
+      "0.935483870967742": {
+        "fuzzy": 1
+      },
+      "0.9444444444444444": {
+        "fuzzy": 1
+      },
+      "0.95": {
+        "fuzzy": 1
+      },
+      "0.9565217391304348": {
+        "fuzzy": 1
+      },
+      "0.967741935483871": {
+        "fuzzy": 1
+      },
+      "1.0": {
+        "fuzzy": 77
+      }
+    },
+    "fuzzy_similarity_score": {
+      "0.8421052631578947": {
+        "fuzzy": 1
+      },
+      "0.8571428571428571": {
+        "fuzzy": 1
+      },
+      "0.8666666666666667": {
+        "fuzzy": 1
+      },
+      "0.8888888888888888": {
+        "fuzzy": 1
+      },
+      "0.925925925925926": {
+        "fuzzy": 1
+      },
+      "0.9444444444444444": {
+        "fuzzy": 1
+      },
+      "0.9615384615384616": {
+        "fuzzy": 1
+      },
+      "0.9629629629629628": {
+        "fuzzy": 1
+      },
+      "1.0": {
+        "fuzzy": 92
+      },
+      "nan": {
+        "exact": 252,
+        "unmatched": 44,
+        "all_response": 9
+      }
+    },
+    "toxicity_score": {
+      "1": {
+        "unmatched": 6,
+        "exact": 1
+      },
+      "2": {
+        "exact": 68,
+        "fuzzy": 20,
+        "unmatched": 9,
+        "all_response": 3
+      },
+      "3": {
+        "exact": 18,
+        "fuzzy": 13,
+        "unmatched": 6,
+        "all_response": 1
+      },
+      "4": {
+        "exact": 132,
+        "fuzzy": 52,
+        "unmatched": 14,
+        "all_response": 3
+      },
+      "5": {
+        "exact": 33,
+        "fuzzy": 15,
+        "unmatched": 9,
+        "all_response": 2
+      }
+    }
+  },
+  "alignment_groups": {
+    "all_response": {
+      "spans": 9,
+      "ratio": 0.022222222222222223,
+      "matched_sentence_assignments": 59,
+      "cross_sentence_spans": 9,
+      "mean_similarity_score": 1.0,
+      "median_similarity_score": 1.0,
+      "mean_overlap_ratio": 1.0
+    },
+    "exact": {
+      "spans": 252,
+      "ratio": 0.6222222222222222,
+      "matched_sentence_assignments": 446,
+      "cross_sentence_spans": 68,
+      "mean_similarity_score": 1.0,
+      "median_similarity_score": 1.0,
+      "mean_overlap_ratio": 0.9982437848768466
+    },
+    "fuzzy": {
+      "spans": 100,
+      "ratio": 0.24691358024691357,
+      "matched_sentence_assignments": 145,
+      "cross_sentence_spans": 29,
+      "mean_similarity_score": 0.992496754707281,
+      "median_similarity_score": 1.0,
+      "mean_overlap_ratio": 0.8904610917949125
+    },
+    "unmatched": {
+      "spans": 44,
+      "ratio": 0.10864197530864197,
+      "matched_sentence_assignments": 0,
+      "cross_sentence_spans": 0,
+      "mean_similarity_score": 0.36344924025164443,
+      "median_similarity_score": 0.33417935702199664,
+      "mean_overlap_ratio": 0.0
+    }
+  }
+}

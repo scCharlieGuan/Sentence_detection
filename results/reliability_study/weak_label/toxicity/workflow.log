@@ -1,0 +1,25 @@
+2026-08-18 21:22:57,343 - INFO - HTTP Request: HEAD https://huggingface.co/albert-base-v2/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-18 21:22:57,472 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert-base-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-18 21:22:57,573 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert/albert-base-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-18 21:22:57,673 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert-base-v2/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-18 21:22:57,776 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert/albert-base-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-18 21:22:58,215 - INFO - HTTP Request: HEAD https://huggingface.co/albert-base-v2/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-08-18 21:22:58,343 - INFO - HTTP Request: HEAD https://huggingface.co/albert-base-v2/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-08-18 21:23:12,476 - INFO - ALBERT epoch 1/6 train_loss=0.6947 val_loss=0.6792 val_pr_auc=0.3294 val_roc_auc=0.6681
+2026-08-18 21:23:24,526 - INFO - ALBERT epoch 2/6 train_loss=0.5894 val_loss=0.6359 val_pr_auc=0.3825 val_roc_auc=0.7082
+2026-08-18 21:23:37,552 - INFO - ALBERT epoch 3/6 train_loss=0.4774 val_loss=0.6940 val_pr_auc=0.3731 val_roc_auc=0.6976
+2026-08-18 21:23:50,475 - INFO - ALBERT epoch 4/6 train_loss=0.3552 val_loss=0.7409 val_pr_auc=0.3850 val_roc_auc=0.6983
+2026-08-18 21:24:04,038 - INFO - ALBERT epoch 5/6 train_loss=0.2465 val_loss=0.9627 val_pr_auc=0.3636 val_roc_auc=0.6798
+2026-08-18 21:24:17,585 - INFO - ALBERT epoch 6/6 train_loss=0.2080 val_loss=1.0612 val_pr_auc=0.3850 val_roc_auc=0.6931
+2026-08-18 21:24:43,219 - INFO - HTTP Request: HEAD https://huggingface.co/albert-base-v2/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-18 21:24:43,326 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert-base-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-18 21:24:43,428 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert/albert-base-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-18 21:24:43,535 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert-base-v2/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-18 21:24:43,639 - INFO - HTTP Request: GET https://huggingface.co/api/models/albert/albert-base-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-18 21:24:43,907 - INFO - HTTP Request: HEAD https://huggingface.co/albert-base-v2/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-08-18 21:24:44,023 - INFO - HTTP Request: HEAD https://huggingface.co/albert-base-v2/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-08-18 21:24:57,832 - INFO - ALBERT epoch 1/6 train_loss=0.9039 val_loss=0.7006 val_pr_auc=0.1283 val_roc_auc=0.7437
+2026-08-18 21:25:11,863 - INFO - ALBERT epoch 2/6 train_loss=0.9791 val_loss=0.7236 val_pr_auc=0.1140 val_roc_auc=0.7824
+2026-08-18 21:25:25,882 - INFO - ALBERT epoch 3/6 train_loss=0.8677 val_loss=0.6567 val_pr_auc=0.1745 val_roc_auc=0.8125
+2026-08-18 21:25:40,619 - INFO - ALBERT epoch 4/6 train_loss=0.6754 val_loss=1.2711 val_pr_auc=0.1294 val_roc_auc=0.7480
+2026-08-18 21:25:55,970 - INFO - ALBERT epoch 5/6 train_loss=0.4962 val_loss=1.0031 val_pr_auc=0.1562 val_roc_auc=0.7875

@@ -1,0 +1,79 @@
+{
+  "input_mode": "sentence",
+  "selection_data": "validation only",
+  "threshold_data": "validation only",
+  "test_rows": 443,
+  "model_seed_note": "Seeds repeat model fitting on one fixed split; they do not estimate split uncertainty.",
+  "specifications": [
+    {
+      "experiment": "word_unigram",
+      "representation": "word_unigram",
+      "classifier": "lr",
+      "class_weight": "none",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_bigram",
+      "representation": "word_bigram",
+      "classifier": "lr",
+      "class_weight": "none",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_bigram_no_frequency_filter",
+      "representation": "word_bigram",
+      "classifier": "lr",
+      "class_weight": "none",
+      "max_df": 1.0
+    },
+    {
+      "experiment": "word_bigram_high_frequency_filter",
+      "representation": "word_bigram",
+      "classifier": "lr",
+      "class_weight": "none",
+      "max_df": 0.8
+    },
+    {
+      "experiment": "char",
+      "representation": "char",
+      "classifier": "lr",
+      "class_weight": "none",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_char",
+      "representation": "word_char",
+      "classifier": "lr",
+      "class_weight": "none",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_unigram_svm",
+      "representation": "word_unigram",
+      "classifier": "svm",
+      "class_weight": "none",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_bigram_svm",
+      "representation": "word_bigram",
+      "classifier": "svm",
+      "class_weight": "none",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_bigram_balanced",
+      "representation": "word_bigram",
+      "classifier": "lr",
+      "class_weight": "balanced",
+      "max_df": 0.95
+    },
+    {
+      "experiment": "word_char_svm_balanced",
+      "representation": "word_char",
+      "classifier": "svm",
+      "class_weight": "balanced",
+      "max_df": 0.95
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "analysis_scope": {
+    "task": "toxicity",
+    "sentences_path": "C:\\Personal programs\\sentence_error_detection_project\\data\\processed_question_grouped\\toxicity\\sentences.csv",
+    "alignment_log_path": "C:\\Personal programs\\sentence_error_detection_project\\data\\processed_question_grouped\\toxicity\\alignment_log.csv",
+    "prediction_paths": {
+      "tfidf": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\metrics\\toxicity\\tfidf_lr\\test_predictions.csv",
+      "bge_target_next": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\metrics\\toxicity\\sbert_bge_target_next\\test_predictions.csv",
+      "albert_weighted": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\metrics\\toxicity\\albert_weighted_ce\\test_predictions.csv"
+    },
+    "quality_measurement_limit": "No manually adjudicated gold labels are available; reported values are quality proxies, not true label precision/recall."
+  },
+  "labels": {
+    "rows": 2848,
+    "responses": 372,
+    "current_positive": 603,
+    "current_prevalence": 0.21172752808988765,
+    "threshold_1_positive": 603,
+    "threshold_1_prevalence": 0.21172752808988765,
+    "threshold_2_positive": 170,
+    "threshold_2_prevalence": 0.059691011235955056,
+    "positives_removed_by_threshold_2": 433,
+    "positive_removal_ratio": 0.7180762852404643,
+    "single_annotator_positive": 433,
+    "single_annotator_positive_ratio": 0.7180762852404643,
+    "match_count_distribution": {
+      "0": 2245,
+      "1": 433,
+      "2": 121,
+      "3": 25,
+      "4": 17,
+      "5": 3,
+      "6": 1,
+      "14": 1,
+      "15": 2
+    },
+    "label_rule_mismatches": 0,
+    "conflicting_normalized_sentence_groups": 7,
+    "modal_total_annotators": 5,
+    "aggregation_anomalies": [
+      {
+        "response_id": 4,
+        "total_annotators": 63,
+        "sentences": 2,
+        "maximum_match_count": 15,
+        "questionID": "questionID_315",
+        "response_preview": "I'm really sorry that you're feeling this way, but I'm unable to provide the help that you need. It's really important to talk things over with someone who can, though, such as a mental health professional or a trusted person in your life."
+      },
+      {
+        "response_id": 116,
+        "total_annotators": 45,
+        "sentences": 2,
+        "maximum_match_count": 15,
+        "questionID": "questionID_76",
+        "response_preview": "I'm really sorry to hear that you're feeling this way, but I'm unable to provide the help that you need. It's really important to talk things over with someone who can, though, such as a mental health professional or a trusted person in you"
+      },
+      {
+        "response_id": 143,
+        "total_annotators": 10,
+        "sentences": 2,
+        "maximum_match_count": 2,
+        "questionID": "questionID_917",
+        "response_preview": "I'm really sorry to hear you're feeling this way, but I'm unable to provide the help that you need. It's really important to talk things over with someone who can, though, such as a mental health professional or a trusted person in your lif"
+      }
+    ]
+  },
+  "alignment": {
+    "total_spans": 405,
+    "matched_spans": 361,
+    "matched_ratio": 0.891358024691358,
+    "unmatched_spans": 44,
+    "unmatched_ratio": 0.10864197530864197,
+    "matched_sentence_assignments": 890,
+    "fuzzy_sentence_assignments": 506,
+    "fuzzy_assignment_ratio": 0.5685393258426966,
+    "methods": {
+      "all_response": {
+        "spans": 9,
+        "matched_assignments": 59,
+        "mean_sentences": 6.555555555555555,
+        "multi_sentence_spans": 9,
+        "score_median": 1.0,
+        "score_min": 1.0
+      },
+      "exact_char_overlap": {
+        "spans": 224,
+        "matched_assignments": 325,
+        "mean_sentences": 1.4508928571428572,
+        "multi_sentence_spans": 44,
+        "score_median": 1.0,
+        "score_min": 1.0
+      },
+      "fuzzy_sentence_or_window": {
+        "spans": 128,
+        "matched_assignments": 506,
+        "mean_sentences": 3.953125,
+        "multi_sentence_spans": 125,
+        "score_median": 1.0,
+        "score_min": 0.8421052631578947
+      },
+      "unmatched": {
+        "spans": 44,
+        "matched_assignments": 0,
+        "mean_sentences": 0.0,
+        "multi_sentence_spans": 0,
+        "score_median": 0.33417935702199664,
+        "score_min": 0.0
+      }
+    },
+    "fuzzy_diagnostics": {
+      "spans": 128,
+      "multi_sentence_spans": 125,
+      "multi_sentence_ratio": 0.9765625,
+      "score_equal_1": 119,
+      "score_equal_1_ratio": 0.9296875,
+      "maximum_matched_sentences": 16,
+      "matched_sentence_count_distribution": {
+        "1": 3,
+        "2": 18,
+        "3": 37,
+        "4": 42,
+        "5": 18,
+        "6": 2,
+        "8": 3,
+        "9": 1,
+        "10": 1,
+        "12": 1,
+        "15": 1,
+        "16": 1
+      }
+    },
+    "positive_provenance": {
+      "positive_sentences": 603,
+      "counts": {
+        "fuzzy_only": 309,
+        "exact_only": 185,
+        "all_response": 59,
+        "exact_and_fuzzy": 50
+      },
+      "fuzzy_only": 309,
+      "fuzzy_only_ratio": 0.5124378109452736,
+      "single_annotator_fuzzy_only": 245,
+      "single_annotator_fuzzy_only_ratio": 0.40630182421227196
+    }
+  },
+  "prevalence_by_responder": [
+    {
+      "responder": "human",
+      "rows": 770,
+      "threshold_1_positive": 364,
+      "threshold_1_prevalence": 0.4727272727272727,
+      "threshold_2_positive": 139,
+      "threshold_2_prevalence": 0.18051948051948052
+    },
+    {
+      "responder": "gemini",
+      "rows": 312,
+      "threshold_1_positive": 64,
+      "threshold_1_prevalence": 0.20512820512820512,
+      "threshold_2_positive": 14,
+      "threshold_2_prevalence": 0.04487179487179487
+    },
+    {
+      "responder": "gpt4",
+      "rows": 613,
+      "threshold_1_positive": 65,
+      "threshold_1_prevalence": 0.10603588907014681,
+      "threshold_2_positive": 9,
+      "threshold_2_prevalence": 0.01468189233278956
+    },
+    {
+      "responder": "llama3",
+      "rows": 1153,
+      "threshold_1_positive": 110,
+      "threshold_1_prevalence": 0.09540329575021683,
+      "threshold_2_positive": 8,
+      "threshold_2_prevalence": 0.006938421509106678
+    }
+  ],
+  "prevalence_by_topic": [
+    {
+      "topic": "family-conflict",
+      "rows": 162,
+      "threshold_1_positive": 80,
+      "threshold_1_prevalence": 0.49382716049382713,
+      "threshold_2_positive": 22,
+      "threshold_2_prevalence": 0.13580246913580246
+    },
+    {
+      "topic": "parenting",
+      "rows": 136,
+      "threshold_1_positive": 44,
+      "threshold_1_prevalence": 0.3235294117647059,
+      "threshold_2_positive": 11,
+      "threshold_2_prevalence": 0.08088235294117647
+    },
+    {
+      "topic": "anger-management",
+      "rows": 140,
+      "threshold_1_positive": 45,
+      "threshold_1_prevalence": 0.32142857142857145,
+      "threshold_2_positive": 12,
+      "threshold_2_prevalence": 0.08571428571428572
+    },
+    {
+      "topic": "depression",
+      "rows": 132,
+      "threshold_1_positive": 39,
+      "threshold_1_prevalence": 0.29545454545454547,
+      "threshold_2_positive": 14,
+      "threshold_2_prevalence": 0.10606060606060606
+    },
+    {
+      "topic": "self-esteem",
+      "rows": 148,
+      "threshold_1_positive": 40,
+      "threshold_1_prevalence": 0.2702702702702703,
+      "threshold_2_positive": 18,
+      "threshold_2_prevalence": 0.12162162162162163
+    },
+    {
+      "topic": "marriage",
+      "rows": 126,
+      "threshold_1_positive": 32,
+      "threshold_1_prevalence": 0.25396825396825395,
+      "threshold_2_positive": 6,
+      "threshold_2_prevalence": 0.047619047619047616
+    },
+    {
+      "topic": "social-relationships",
+      "rows": 131,
+      "threshold_1_positive": 30,
+      "threshold_1_prevalence": 0.22900763358778625,
+      "threshold_2_positive": 8,
+      "threshold_2_prevalence": 0.061068702290076333
+    },
+    {
+      "topic": "relationships",
+      "rows": 147,
+      "threshold_1_positive": 33,
+      "threshold_1_prevalence": 0.22448979591836735,
+      "threshold_2_positive": 8,
+      "threshold_2_prevalence": 0.05442176870748299
+    },
+    {
+      "topic": "behavioral-change",
+      "rows": 131,
+      "threshold_1_positive": 27,
+      "threshold_1_prevalence": 0.20610687022900764,
+      "threshold_2_positive": 9,
+      "threshold_2_prevalence": 0.06870229007633588
+    },
+    {
+      "topic": "anxiety",
+      "rows": 118,
+      "threshold_1_positive": 24,
+      "threshold_1_prevalence": 0.2033898305084746,
+      "threshold_2_positive": 8,
+      "threshold_2_prevalence": 0.06779661016949153
+    },
+    {
+      "topic": "substance-abuse",
+      "rows": 139,
+      "threshold_1_positive": 27,
+      "threshold_1_prevalence": 0.19424460431654678,
+      "threshold_2_positive": 7,
+      "threshold_2_prevalence": 0.050359712230215826
+    },
+    {
+      "topic": "relationship-dissolution",
+      "rows": 151,
+      "threshold_1_positive": 27,
+      "threshold_1_prevalence": 0.17880794701986755,
+      "threshold_2_positive": 10,
+      "threshold_2_prevalence": 0.06622516556291391
+    },
+    {
+      "topic": "domestic-violence",
+      "rows": 162,
+      "threshold_1_positive": 27,
+      "threshold_1_prevalence": 0.16666666666666666,
+      "threshold_2_positive": 1,
+      "threshold_2_prevalence": 0.006172839506172839
+    },
+    {
+      "topic": "workplace-relationships",
+      "rows": 167,
+      "threshold_1_positive": 27,
+      "threshold_1_prevalence": 0.16167664670658682,
+      "threshold_2_positive": 9,
+      "threshold_2_prevalence": 0.05389221556886228
+    },
+    {
+      "topic": "eating-disorders",
+      "rows": 145,
+      "threshold_1_positive": 23,
+      "threshold_1_prevalence": 0.15862068965517243,
+      "threshold_2_positive": 4,
+      "threshold_2_prevalence": 0.027586206896551724
+    },
+    {
+      "topic": "counseling-fundamentals",
+      "rows": 162,
+      "threshold_1_positive": 24,
+      "threshold_1_prevalence": 0.14814814814814814,
+      "threshold_2_positive": 13,
+      "threshold_2_prevalence": 0.08024691358024691
+    },
+    {
+      "topic": "legal-regulatory",
+      "rows": 110,
+      "threshold_1_positive": 16,
+      "threshold_1_prevalence": 0.14545454545454545,
+      "threshold_2_positive": 3,
+      "threshold_2_prevalence": 0.02727272727272727
+    },
+    {
+      "topic": "trauma",
+      "rows": 124,
+      "threshold_1_positive": 14,
+      "threshold_1_prevalence": 0.11290322580645161,
+      "threshold_2_positive": 2,
+      "threshold_2_prevalence": 0.016129032258064516
+    },
+    {
+      "topic": "grief-and-loss",
+      "rows": 170,
+      "threshold_1_positive": 13,
+      "threshold_1_prevalence": 0.07647058823529412,
+      "threshold_2_positive": 1,
+      "threshold_2_prevalence": 0.0058823529411764705
+    },
+    {
+      "topic": "professional-ethics",
+      "rows": 147,
+      "threshold_1_positive": 11,
+      "threshold_1_prevalence": 0.07482993197278912,
+      "threshold_2_positive": 4,
+      "threshold_2_prevalence": 0.027210884353741496
+    }
+  ],
+  "model_agreement": {
+    "available": true,
+    "models": [
+      "tfidf",
+      "bge_target_next",
+      "albert_weighted"
+    ],
+    "number_of_models": 3,
+    "common_test_rows": 417,
+    "test_positive": 79,
+    "test_prevalence": 0.18944844124700239,
+    "by_match_count": [
+      {
+        "match_count": 1,
+        "positive_sentences": 51,
+        "unanimous_miss": 11,
+        "unanimous_miss_ratio": 0.21568627450980393,
+        "unanimous_hit": 17,
+        "unanimous_hit_ratio": 0.3333333333333333,
+        "mean_positive_votes": 1.6470588235294117
+      },
+      {
+        "match_count": 2,
+        "positive_sentences": 20,
+        "unanimous_miss": 2,
+        "unanimous_miss_ratio": 0.1,
+        "unanimous_hit": 12,
+        "unanimous_hit_ratio": 0.6,
+        "mean_positive_votes": 2.25
+      },
+      {
+        "match_count": 3,
+        "positive_sentences": 8,
+        "unanimous_miss": 0,
+        "unanimous_miss_ratio": 0.0,
+        "unanimous_hit": 5,
+        "unanimous_hit_ratio": 0.625,
+        "mean_positive_votes": 2.625
+      }
+    ],
+    "by_provenance": [
+      {
+        "provenance": "all_response",
+        "positive_sentences": 15,
+        "single_annotator": 13,
+        "unanimous_miss": 8,
+        "unanimous_miss_ratio": 0.5333333333333333,
+        "unanimous_hit": 0,
+        "unanimous_hit_ratio": 0.0,
+        "mean_positive_votes": 0.7333333333333333,
+        "tfidf_mean_probability": 0.49673900427460904,
+        "bge_target_next_mean_probability": 0.42400757440890097,
+        "albert_weighted_mean_probability": 0.3759971079999999
+      },
+      {
+        "provenance": "exact_and_fuzzy",
+        "positive_sentences": 15,
+        "single_annotator": 0,
+        "unanimous_miss": 0,
+        "unanimous_miss_ratio": 0.0,
+        "unanimous_hit": 10,
+        "unanimous_hit_ratio": 0.6666666666666666,
+        "mean_positive_votes": 2.6,
+        "tfidf_mean_probability": 0.5040409407687346,
+        "bge_target_next_mean_probability": 0.6212684780511127,
+        "albert_weighted_mean_probability": 0.7186515826666666
+      },
+      {
+        "provenance": "exact_only",
+        "positive_sentences": 13,
+        "single_annotator": 11,
+        "unanimous_miss": 2,
+        "unanimous_miss_ratio": 0.15384615384615385,
+        "unanimous_hit": 5,
+        "unanimous_hit_ratio": 0.38461538461538464,
+        "mean_positive_votes": 1.6923076923076923,
+        "tfidf_mean_probability": 0.5006949823874547,
+        "bge_target_next_mean_probability": 0.5777502045504074,
+        "albert_weighted_mean_probability": 0.5128775976923077
+      },
+      {
+        "provenance": "fuzzy_only",
+        "positive_sentences": 36,
+        "single_annotator": 27,
+        "unanimous_miss": 3,
+        "unanimous_miss_ratio": 0.08333333333333333,
+        "unanimous_hit": 19,
+        "unanimous_hit_ratio": 0.5277777777777778,
+        "mean_positive_votes": 2.1666666666666665,
+        "tfidf_mean_probability": 0.5030386070306314,
+        "bge_target_next_mean_probability": 0.5648835280410959,
+        "albert_weighted_mean_probability": 0.6323903494444445
+      }
+    ],
+    "all_response_positive": {
+      "positive_sentences": 15,
+      "unanimous_miss": 8,
+      "unanimous_miss_ratio": 0.5333333333333333,
+      "unanimous_hit": 0
+    },
+    "model_summaries": [
+      {
+        "model": "tfidf",
+        "rows": 417,
+        "mean_probability_positive_label": 0.5016471367062,
+        "mean_probability_negative_label": 0.4977008150489276,
+        "positive_recall_at_saved_threshold": 0.6455696202531646
+      },
+      {
+        "model": "bge_target_next",
+        "rows": 417,
+        "mean_probability_positive_label": 0.5509582336143667,
+        "mean_probability_negative_label": 0.4207455846215891,
+        "positive_recall_at_saved_threshold": 0.7088607594936709
+      },
+      {
+        "model": "albert_weighted",
+        "rows": 417,
+        "mean_probability_positive_label": 0.5804201482278482,
+        "mean_probability_negative_label": 0.41257118059171594,
+        "positive_recall_at_saved_threshold": 0.5443037974683544
+      }
+    ],
+    "skipped_predictions": {}
+  },
+  "baseline_threshold_1": {
+    "available": true,
+    "path": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\analysis\\toxicity\\baselines\\baseline_results.csv",
+    "experiments": 8,
+    "best_pr_auc": {
+      "experiment": "char_lr_unweighted",
+      "value": 0.4404354100400911,
+      "prevalence": 0.1894484412470023,
+      "lift_over_prevalence": 2.3248299491989632
+    },
+    "best_roc_auc": {
+      "experiment": "char_lr_unweighted",
+      "value": 0.7428657029435998,
+      "prevalence": 0.1894484412470023,
+      "lift_over_prevalence": null
+    },
+    "best_f1": {
+      "experiment": "word_char_lr_unweighted",
+      "value": 0.46739130434782605,
+      "prevalence": 0.1894484412470023,
+      "lift_over_prevalence": null
+    }
+  },
+  "baseline_threshold_2": {
+    "available": true,
+    "path": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\analysis\\toxicity\\label_threshold_2\\baseline_results.csv",
+    "experiments": 8,
+    "best_pr_auc": {
+      "experiment": "word_char_lr_unweighted",
+      "value": 0.2931314536823752,
+      "prevalence": 0.0671462829736211,
+      "lift_over_prevalence": 4.365564863769659
+    },
+    "best_roc_auc": {
+      "experiment": "word_bigram_lr_unweighted",
+      "value": 0.8343279471171502,
+      "prevalence": 0.0671462829736211,
+      "lift_over_prevalence": null
+    },
+    "best_f1": {
+      "experiment": "char_lr_unweighted",
+      "value": 0.2758620689655172,
+      "prevalence": 0.0671462829736211,
+      "lift_over_prevalence": null
+    }
+  },
+  "quality_judgement": {
+    "overall": "medium_to_low",
+    "recommended_use": "High-recall candidate labels or confidence-weighted training supervision; not unreviewed sentence-level gold.",
+    "highest_risk_groups": [
+      "single_annotator_fuzzy_only",
+      "all_response_propagation",
+      "unmatched_spans",
+      "conflicting_normalized_sentence_labels",
+      "responses_with_nonstandard_annotator_pool_size"
+    ]
+  },
+  "outputs": {
+    "summary_json": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\analysis\\toxicity\\weak_label_quality\\weak_label_quality_summary.json",
+    "markdown_report": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\analysis\\toxicity\\weak_label_quality\\weak_label_quality_report.md",
+    "high_risk_sentences": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\analysis\\toxicity\\weak_label_quality\\high_risk_sentences.csv",
+    "unmatched_spans": "C:\\Personal programs\\sentence_error_detection_project\\reports\\thesis\\analysis\\toxicity\\weak_label_quality\\unmatched_spans.csv",
+    "high_risk_sentence_rows": 306,
+    "unmatched_span_rows": 44
+  }
+}

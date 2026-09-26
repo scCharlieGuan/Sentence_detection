@@ -1,0 +1,135 @@
+{
+  "model_name": "tfidf_lr",
+  "input_mode": "sentence",
+  "seed": 42,
+  "best_params": {},
+  "hyperparameter_tuning": {
+    "enabled": false
+  },
+  "threshold": 0.5,
+  "threshold_metric": "f1",
+  "validation_threshold_score": 0.3548387096774194,
+  "validation_metrics": {
+    "accuracy": 0.7202797202797203,
+    "precision": 0.28695652173913044,
+    "recall": 0.4647887323943662,
+    "f1": 0.3548387096774194,
+    "f0.5": 0.3107344632768362,
+    "f2": 0.41353383458646614,
+    "macro_f1": 0.5881336405529953,
+    "roc_auc": 0.663191439137619,
+    "pr_auc": 0.26716317718762755,
+    "prevalence": 0.1655011655011655,
+    "pr_auc_lift": 1.6142676480773552,
+    "threshold": 0.5,
+    "positive_prediction_rate": 0.2680652680652681,
+    "confusion_matrix": [
+      [
+        276,
+        82
+      ],
+      [
+        38,
+        33
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.6681715575620768,
+    "precision": 0.1951219512195122,
+    "recall": 0.3333333333333333,
+    "f1": 0.24615384615384617,
+    "f0.5": 0.2127659574468085,
+    "f2": 0.291970802919708,
+    "macro_f1": 0.516709339864188,
+    "roc_auc": 0.6006663671758011,
+    "pr_auc": 0.2472575769456333,
+    "prevalence": 0.16252821670428894,
+    "pr_auc_lift": 1.5213209248182715,
+    "threshold": 0.5,
+    "positive_prediction_rate": 0.27765237020316025,
+    "confusion_matrix": [
+      [
+        272,
+        99
+      ],
+      [
+        48,
+        24
+      ]
+    ]
+  },
+  "runtime_seconds": 18.792810400016606,
+  "dataset_sha256": "cbb3cabf8249d351cdd3c86bb867e9e2059320009c36ed666ae505bec6c10aba",
+  "split_strategy": "near_duplicate",
+  "actual_split_group_column": "near_duplicate_group_id",
+  "effective_model_config": {
+    "name": "tfidf_lr",
+    "input_mode": "sentence",
+    "pretrained_model_name": "albert-base-v2",
+    "sentence_transformer_name": "BAAI/bge-base-en-v1.5",
+    "embedding_normalization": "l2",
+    "class_weight": "balanced",
+    "num_labels": 2,
+    "max_length": 128,
+    "sbert_batch_size": 32,
+    "tfidf_ngram_range": [
+      1,
+      2
+    ],
+    "tfidf_min_df": 5,
+    "tfidf_max_df": 0.95,
+    "logistic_c": 0.01,
+    "mlp_hidden_sizes": [
+      128
+    ],
+    "mlp_alpha": 0.001,
+    "mlp_max_iter": 300
+  },
+  "effective_training_config": {
+    "batch_size": 16,
+    "learning_rate": 1e-05,
+    "encoder_learning_rate": 1e-05,
+    "head_learning_rate": 5e-05,
+    "epochs": 6,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "gradient_accumulation_steps": 1,
+    "gradient_clip_norm": 1.0,
+    "mixed_precision": true,
+    "use_patience": true,
+    "patience": 2,
+    "freeze_strategy": "full",
+    "unfreeze_last_groups": 1,
+    "loss": "cross_entropy",
+    "focal_gamma": 2.0,
+    "imbalance_method": "none",
+    "threshold_grid": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "threshold_metric": "f1",
+    "primary_selection_metric": "pr_auc",
+    "train_final_on_train_val": false,
+    "hyperparameter_tuning": {
+      "enabled": false
+    }
+  }
+}

@@ -1,0 +1,583 @@
+{
+  "rows": 2907,
+  "responses": 400,
+  "positive": 477,
+  "prevalence": 0.16408668730650156,
+  "split_summary": {
+    "train": {
+      "rows": 2060,
+      "responses": 280,
+      "positive": 365,
+      "prevalence": 0.17718446601941748
+    },
+    "val": {
+      "rows": 427,
+      "responses": 60,
+      "positive": 50,
+      "prevalence": 0.117096018735363
+    },
+    "test": {
+      "rows": 420,
+      "responses": 60,
+      "positive": 62,
+      "prevalence": 0.14761904761904762
+    }
+  },
+  "row_overlap": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "group_overlap": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "all_rows_assigned_once": true,
+  "missing_rows": 0,
+  "exact_or_normalized_duplicate_groups_across_splits": 17,
+  "near_duplicate_cross_split": {
+    "train_val": {
+      "right_rows_similarity_gte_0.90": 17,
+      "right_rows_similarity_gte_0.95": 16,
+      "maximum_similarity": 1.0000000000000004
+    },
+    "train_test": {
+      "right_rows_similarity_gte_0.90": 18,
+      "right_rows_similarity_gte_0.95": 18,
+      "maximum_similarity": 1.0000000000000002
+    },
+    "val_test": {
+      "right_rows_similarity_gte_0.90": 13,
+      "right_rows_similarity_gte_0.95": 13,
+      "maximum_similarity": 1.0000000000000002
+    }
+  },
+  "conflicting_labels_for_identical_sentence_text": 8,
+  "multi_sentence_positive_span_proxy": 100,
+  "surface_feature_means_by_label": {
+    "0": {
+      "characters": 115.93456790123457,
+      "tokens": 18.66460905349794,
+      "punctuation": 2.094238683127572,
+      "has_negation": 0.10164609053497943,
+      "has_should": 0.012345679012345678
+    },
+    "1": {
+      "characters": 119.27882599580713,
+      "tokens": 20.40461215932914,
+      "punctuation": 2.129979035639413,
+      "has_negation": 0.16142557651991615,
+      "has_should": 0.027253668763102725
+    }
+  },
+  "questionID_overlap": {
+    "train_val": 0,
+    "train_test": 0,
+    "val_test": 0
+  },
+  "response_text_overlap": {
+    "train_val": 2,
+    "train_test": 2,
+    "val_test": 3
+  },
+  "prevalence_by_responder": {
+    "human": {
+      "rows": 773,
+      "positive": 269,
+      "prevalence": 0.34799482535575677
+    },
+    "gemini": {
+      "rows": 312,
+      "positive": 52,
+      "prevalence": 0.16666666666666666
+    },
+    "gpt4": {
+      "rows": 669,
+      "positive": 78,
+      "prevalence": 0.11659192825112108
+    },
+    "llama3": {
+      "rows": 1153,
+      "positive": 78,
+      "prevalence": 0.06764960971379011
+    }
+  },
+  "responder_distribution_by_split": {
+    "train": {
+      "gemini": {
+        "rows": 218,
+        "row_proportion": 0.10582524271844661,
+        "positive": 37,
+        "prevalence": 0.16972477064220184
+      },
+      "gpt4": {
+        "rows": 462,
+        "row_proportion": 0.22427184466019418,
+        "positive": 69,
+        "prevalence": 0.14935064935064934
+      },
+      "human": {
+        "rows": 556,
+        "row_proportion": 0.26990291262135924,
+        "positive": 192,
+        "prevalence": 0.34532374100719426
+      },
+      "llama3": {
+        "rows": 824,
+        "row_proportion": 0.4,
+        "positive": 67,
+        "prevalence": 0.08131067961165049
+      }
+    },
+    "val": {
+      "gemini": {
+        "rows": 50,
+        "row_proportion": 0.117096018735363,
+        "positive": 6,
+        "prevalence": 0.12
+      },
+      "gpt4": {
+        "rows": 105,
+        "row_proportion": 0.2459016393442623,
+        "positive": 5,
+        "prevalence": 0.047619047619047616
+      },
+      "human": {
+        "rows": 114,
+        "row_proportion": 0.26697892271662765,
+        "positive": 33,
+        "prevalence": 0.2894736842105263
+      },
+      "llama3": {
+        "rows": 158,
+        "row_proportion": 0.3700234192037471,
+        "positive": 6,
+        "prevalence": 0.0379746835443038
+      }
+    },
+    "test": {
+      "gemini": {
+        "rows": 44,
+        "row_proportion": 0.10476190476190476,
+        "positive": 9,
+        "prevalence": 0.20454545454545456
+      },
+      "gpt4": {
+        "rows": 102,
+        "row_proportion": 0.24285714285714285,
+        "positive": 4,
+        "prevalence": 0.0392156862745098
+      },
+      "human": {
+        "rows": 103,
+        "row_proportion": 0.24523809523809523,
+        "positive": 44,
+        "prevalence": 0.42718446601941745
+      },
+      "llama3": {
+        "rows": 171,
+        "row_proportion": 0.40714285714285714,
+        "positive": 5,
+        "prevalence": 0.029239766081871343
+      }
+    }
+  },
+  "unknown_responder_categories": {
+    "val": [],
+    "test": []
+  },
+  "prevalence_by_topic": {
+    "family-conflict": {
+      "rows": 162,
+      "positive": 69,
+      "prevalence": 0.42592592592592593
+    },
+    "depression": {
+      "rows": 140,
+      "positive": 38,
+      "prevalence": 0.2714285714285714
+    },
+    "self-esteem": {
+      "rows": 155,
+      "positive": 38,
+      "prevalence": 0.24516129032258063
+    },
+    "parenting": {
+      "rows": 138,
+      "positive": 32,
+      "prevalence": 0.2318840579710145
+    },
+    "relationships": {
+      "rows": 147,
+      "positive": 31,
+      "prevalence": 0.2108843537414966
+    },
+    "anger-management": {
+      "rows": 142,
+      "positive": 29,
+      "prevalence": 0.20422535211267606
+    },
+    "substance-abuse": {
+      "rows": 143,
+      "positive": 24,
+      "prevalence": 0.16783216783216784
+    },
+    "marriage": {
+      "rows": 128,
+      "positive": 20,
+      "prevalence": 0.15625
+    },
+    "anxiety": {
+      "rows": 124,
+      "positive": 19,
+      "prevalence": 0.1532258064516129
+    },
+    "legal-regulatory": {
+      "rows": 112,
+      "positive": 16,
+      "prevalence": 0.14285714285714285
+    },
+    "behavioral-change": {
+      "rows": 137,
+      "positive": 19,
+      "prevalence": 0.1386861313868613
+    },
+    "social-relationships": {
+      "rows": 135,
+      "positive": 17,
+      "prevalence": 0.1259259259259259
+    },
+    "domestic-violence": {
+      "rows": 165,
+      "positive": 20,
+      "prevalence": 0.12121212121212122
+    },
+    "counseling-fundamentals": {
+      "rows": 163,
+      "positive": 18,
+      "prevalence": 0.11042944785276074
+    },
+    "eating-disorders": {
+      "rows": 145,
+      "positive": 16,
+      "prevalence": 0.1103448275862069
+    },
+    "relationship-dissolution": {
+      "rows": 155,
+      "positive": 17,
+      "prevalence": 0.10967741935483871
+    },
+    "trauma": {
+      "rows": 128,
+      "positive": 14,
+      "prevalence": 0.109375
+    },
+    "workplace-relationships": {
+      "rows": 169,
+      "positive": 18,
+      "prevalence": 0.10650887573964497
+    },
+    "grief-and-loss": {
+      "rows": 172,
+      "positive": 15,
+      "prevalence": 0.0872093023255814
+    },
+    "professional-ethics": {
+      "rows": 147,
+      "positive": 7,
+      "prevalence": 0.047619047619047616
+    }
+  },
+  "topic_distribution_by_split": {
+    "train": {
+      "anger-management": {
+        "rows": 122,
+        "row_proportion": 0.059223300970873784,
+        "positive": 24,
+        "prevalence": 0.19672131147540983
+      },
+      "anxiety": {
+        "rows": 77,
+        "row_proportion": 0.03737864077669903,
+        "positive": 13,
+        "prevalence": 0.16883116883116883
+      },
+      "behavioral-change": {
+        "rows": 117,
+        "row_proportion": 0.05679611650485437,
+        "positive": 13,
+        "prevalence": 0.1111111111111111
+      },
+      "counseling-fundamentals": {
+        "rows": 58,
+        "row_proportion": 0.02815533980582524,
+        "positive": 10,
+        "prevalence": 0.1724137931034483
+      },
+      "depression": {
+        "rows": 140,
+        "row_proportion": 0.06796116504854369,
+        "positive": 38,
+        "prevalence": 0.2714285714285714
+      },
+      "domestic-violence": {
+        "rows": 141,
+        "row_proportion": 0.06844660194174758,
+        "positive": 18,
+        "prevalence": 0.1276595744680851
+      },
+      "eating-disorders": {
+        "rows": 88,
+        "row_proportion": 0.04271844660194175,
+        "positive": 11,
+        "prevalence": 0.125
+      },
+      "family-conflict": {
+        "rows": 137,
+        "row_proportion": 0.06650485436893204,
+        "positive": 65,
+        "prevalence": 0.4744525547445255
+      },
+      "grief-and-loss": {
+        "rows": 138,
+        "row_proportion": 0.06699029126213592,
+        "positive": 12,
+        "prevalence": 0.08695652173913043
+      },
+      "legal-regulatory": {
+        "rows": 94,
+        "row_proportion": 0.04563106796116505,
+        "positive": 15,
+        "prevalence": 0.1595744680851064
+      },
+      "marriage": {
+        "rows": 25,
+        "row_proportion": 0.012135922330097087,
+        "positive": 4,
+        "prevalence": 0.16
+      },
+      "parenting": {
+        "rows": 138,
+        "row_proportion": 0.06699029126213592,
+        "positive": 32,
+        "prevalence": 0.2318840579710145
+      },
+      "professional-ethics": {
+        "rows": 90,
+        "row_proportion": 0.043689320388349516,
+        "positive": 3,
+        "prevalence": 0.03333333333333333
+      },
+      "relationship-dissolution": {
+        "rows": 129,
+        "row_proportion": 0.06262135922330098,
+        "positive": 14,
+        "prevalence": 0.10852713178294573
+      },
+      "relationships": {
+        "rows": 117,
+        "row_proportion": 0.05679611650485437,
+        "positive": 26,
+        "prevalence": 0.2222222222222222
+      },
+      "self-esteem": {
+        "rows": 122,
+        "row_proportion": 0.059223300970873784,
+        "positive": 22,
+        "prevalence": 0.18032786885245902
+      },
+      "social-relationships": {
+        "rows": 62,
+        "row_proportion": 0.030097087378640777,
+        "positive": 7,
+        "prevalence": 0.11290322580645161
+      },
+      "substance-abuse": {
+        "rows": 75,
+        "row_proportion": 0.03640776699029126,
+        "positive": 16,
+        "prevalence": 0.21333333333333335
+      },
+      "trauma": {
+        "rows": 99,
+        "row_proportion": 0.048058252427184464,
+        "positive": 13,
+        "prevalence": 0.13131313131313133
+      },
+      "workplace-relationships": {
+        "rows": 91,
+        "row_proportion": 0.0441747572815534,
+        "positive": 9,
+        "prevalence": 0.0989010989010989
+      }
+    },
+    "val": {
+      "anger-management": {
+        "rows": 20,
+        "row_proportion": 0.0468384074941452,
+        "positive": 5,
+        "prevalence": 0.25
+      },
+      "behavioral-change": {
+        "rows": 20,
+        "row_proportion": 0.0468384074941452,
+        "positive": 6,
+        "prevalence": 0.3
+      },
+      "counseling-fundamentals": {
+        "rows": 26,
+        "row_proportion": 0.06088992974238876,
+        "positive": 0,
+        "prevalence": 0.0
+      },
+      "domestic-violence": {
+        "rows": 24,
+        "row_proportion": 0.05620608899297424,
+        "positive": 2,
+        "prevalence": 0.08333333333333333
+      },
+      "eating-disorders": {
+        "rows": 34,
+        "row_proportion": 0.07962529274004684,
+        "positive": 2,
+        "prevalence": 0.058823529411764705
+      },
+      "family-conflict": {
+        "rows": 25,
+        "row_proportion": 0.0585480093676815,
+        "positive": 4,
+        "prevalence": 0.16
+      },
+      "grief-and-loss": {
+        "rows": 34,
+        "row_proportion": 0.07962529274004684,
+        "positive": 3,
+        "prevalence": 0.08823529411764706
+      },
+      "marriage": {
+        "rows": 24,
+        "row_proportion": 0.05620608899297424,
+        "positive": 1,
+        "prevalence": 0.041666666666666664
+      },
+      "professional-ethics": {
+        "rows": 35,
+        "row_proportion": 0.08196721311475409,
+        "positive": 4,
+        "prevalence": 0.11428571428571428
+      },
+      "social-relationships": {
+        "rows": 44,
+        "row_proportion": 0.10304449648711944,
+        "positive": 7,
+        "prevalence": 0.1590909090909091
+      },
+      "substance-abuse": {
+        "rows": 34,
+        "row_proportion": 0.07962529274004684,
+        "positive": 6,
+        "prevalence": 0.17647058823529413
+      },
+      "trauma": {
+        "rows": 29,
+        "row_proportion": 0.06791569086651054,
+        "positive": 1,
+        "prevalence": 0.034482758620689655
+      },
+      "workplace-relationships": {
+        "rows": 78,
+        "row_proportion": 0.18266978922716628,
+        "positive": 9,
+        "prevalence": 0.11538461538461539
+      }
+    },
+    "test": {
+      "anxiety": {
+        "rows": 47,
+        "row_proportion": 0.11190476190476191,
+        "positive": 6,
+        "prevalence": 0.1276595744680851
+      },
+      "counseling-fundamentals": {
+        "rows": 79,
+        "row_proportion": 0.1880952380952381,
+        "positive": 8,
+        "prevalence": 0.10126582278481013
+      },
+      "eating-disorders": {
+        "rows": 23,
+        "row_proportion": 0.05476190476190476,
+        "positive": 3,
+        "prevalence": 0.13043478260869565
+      },
+      "legal-regulatory": {
+        "rows": 18,
+        "row_proportion": 0.04285714285714286,
+        "positive": 1,
+        "prevalence": 0.05555555555555555
+      },
+      "marriage": {
+        "rows": 79,
+        "row_proportion": 0.1880952380952381,
+        "positive": 15,
+        "prevalence": 0.189873417721519
+      },
+      "professional-ethics": {
+        "rows": 22,
+        "row_proportion": 0.05238095238095238,
+        "positive": 0,
+        "prevalence": 0.0
+      },
+      "relationship-dissolution": {
+        "rows": 26,
+        "row_proportion": 0.06190476190476191,
+        "positive": 3,
+        "prevalence": 0.11538461538461539
+      },
+      "relationships": {
+        "rows": 30,
+        "row_proportion": 0.07142857142857142,
+        "positive": 5,
+        "prevalence": 0.16666666666666666
+      },
+      "self-esteem": {
+        "rows": 33,
+        "row_proportion": 0.07857142857142857,
+        "positive": 16,
+        "prevalence": 0.48484848484848486
+      },
+      "social-relationships": {
+        "rows": 29,
+        "row_proportion": 0.06904761904761905,
+        "positive": 3,
+        "prevalence": 0.10344827586206896
+      },
+      "substance-abuse": {
+        "rows": 34,
+        "row_proportion": 0.08095238095238096,
+        "positive": 2,
+        "prevalence": 0.058823529411764705
+      }
+    }
+  },
+  "unknown_topic_categories": {
+    "val": [],
+    "test": []
+  },
+  "positive_annotator_count": {
+    "median": 1.0,
+    "single_annotator_ratio": 0.740041928721174
+  },
+  "alignment": {
+    "total_spans": 405,
+    "methods": {
+      "exact_char_overlap": 252,
+      "fuzzy_best_window": 100,
+      "unmatched": 44,
+      "all_response": 9
+    },
+    "unmatched_ratio": 0.10864197530864197,
+    "fuzzy_or_fallback_ratio": 0.24691358024691357
+  }
+}

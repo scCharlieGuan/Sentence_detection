@@ -1,0 +1,11 @@
+2026-08-10 19:38:35,579 - INFO - ALBERT epoch 1/6 train_loss=0.6697 val_loss=0.6482 val_pr_auc=0.3670 val_roc_auc=0.7197
+2026-08-10 19:38:48,376 - INFO - ALBERT epoch 2/6 train_loss=0.6010 val_loss=0.6231 val_pr_auc=0.4374 val_roc_auc=0.7371
+2026-08-10 19:39:02,456 - INFO - ALBERT epoch 3/6 train_loss=0.4908 val_loss=0.6116 val_pr_auc=0.4726 val_roc_auc=0.7247
+2026-08-10 19:39:17,058 - INFO - ALBERT epoch 4/6 train_loss=0.3903 val_loss=0.6465 val_pr_auc=0.4283 val_roc_auc=0.6908
+2026-08-10 19:39:31,618 - INFO - ALBERT epoch 5/6 train_loss=0.2787 val_loss=0.7331 val_pr_auc=0.4070 val_roc_auc=0.6986
+2026-08-10 19:39:52,045 - INFO - ALBERT epoch 1/6 train_loss=0.6847 val_loss=0.5045 val_pr_auc=0.0600 val_roc_auc=0.6633
+2026-08-10 19:40:07,656 - INFO - ALBERT epoch 2/6 train_loss=0.5823 val_loss=0.5105 val_pr_auc=0.0747 val_roc_auc=0.7093
+2026-08-10 19:40:23,591 - INFO - ALBERT epoch 3/6 train_loss=0.5581 val_loss=0.6197 val_pr_auc=0.0839 val_roc_auc=0.6977
+2026-08-10 19:40:39,419 - INFO - ALBERT epoch 4/6 train_loss=0.4665 val_loss=0.7392 val_pr_auc=0.0937 val_roc_auc=0.7199
+2026-08-10 19:40:55,358 - INFO - ALBERT epoch 5/6 train_loss=0.2990 val_loss=0.9070 val_pr_auc=0.0884 val_roc_auc=0.7326
+2026-08-10 19:41:11,672 - INFO - ALBERT epoch 6/6 train_loss=0.2387 val_loss=1.0280 val_pr_auc=0.0850 val_roc_auc=0.7239

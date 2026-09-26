@@ -1,0 +1,5 @@
+{
+  "model_name": "tfidf_lr",
+  "best_params": {},
+  "enabled": false
+}

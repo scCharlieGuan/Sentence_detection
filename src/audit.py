@@ -8,22 +8,13 @@ from typing import Any, Dict, Iterable, List, Mapping, Sequence, Tuple
 
 import numpy as np
 import pandas as pd
-from sklearn.calibration import CalibratedClassifierCV
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.pipeline import FeatureUnion, Pipeline
-from sklearn.svm import LinearSVC
 
 from src.evaluate import (
-    aggregate_seed_metrics,
     bootstrap_metric_difference,
-    build_prediction_frame,
-    classification_metrics,
-    find_best_threshold,
     mcnemar_exact,
 )
-from src.input_features import build_model_inputs
 from src.utils import ensure_dir, save_json
 
 
@@ -157,6 +148,17 @@ def audit_dataset(
                 f"{left}_{right}": int(len(candidate_sets[left] & candidate_sets[right]))
                 for left, right in (("train", "val"), ("train", "test"), ("val", "test"))
             }
+    if "response_text_id" in sentence_df:
+        text_sets = {
+            name: set(
+                sentence_df.iloc[np.asarray(indices, dtype=int)]["response_text_id"]
+            )
+            for name, indices in splits.items()
+        }
+        report["response_text_overlap"] = {
+            f"{left}_{right}": int(len(text_sets[left] & text_sets[right]))
+            for left, right in (("train", "val"), ("train", "test"), ("val", "test"))
+        }
     for source_column in ("responder", "topic"):
         if source_column in sentence_df:
             source = (
@@ -171,6 +173,28 @@ def audit_dataset(
                     "prevalence": float(row["mean"]),
                 }
                 for index, row in source.iterrows()
+            }
+            by_split: Dict[str, Any] = {}
+            categories: Dict[str, set[str]] = {}
+            for split_name, indices in splits.items():
+                part = sentence_df.iloc[np.asarray(indices, dtype=int)]
+                grouped_source = part.groupby(source_column, dropna=False)["label"].agg(
+                    rows="size", positive="sum", prevalence="mean"
+                )
+                categories[split_name] = set(part[source_column].dropna().astype(str))
+                by_split[split_name] = {
+                    str(index): {
+                        "rows": int(row["rows"]),
+                        "row_proportion": float(row["rows"] / max(1, len(part))),
+                        "positive": int(row["positive"]),
+                        "prevalence": float(row["prevalence"]),
+                    }
+                    for index, row in grouped_source.iterrows()
+                }
+            report[f"{source_column}_distribution_by_split"] = by_split
+            report[f"unknown_{source_column}_categories"] = {
+                split_name: sorted(categories[split_name] - categories["train"])
+                for split_name in ("val", "test")
             }
     if "positive_annotators" in sentence_df:
         positives = sentence_df.loc[sentence_df["label"] == 1, "positive_annotators"]
@@ -192,164 +216,6 @@ def audit_dataset(
             ),
         }
     return report
-
-
-def _baseline_pipeline(
-    representation: str,
-    classifier: str,
-    class_weight: str | None,
-    seed: int,
-    c_value: float,
-) -> Pipeline:
-    """Construct one declared lexical baseline without fitting."""
-    word_uni = TfidfVectorizer(
-        analyzer="word", ngram_range=(1, 1), min_df=2, max_df=0.95, sublinear_tf=True
-    )
-    word_bi = TfidfVectorizer(
-        analyzer="word", ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True
-    )
-    char = TfidfVectorizer(
-        analyzer="char_wb", ngram_range=(3, 5), min_df=2, max_features=100_000,
-        sublinear_tf=True,
-    )
-    representations: Dict[str, Any] = {
-        "word_unigram": word_uni,
-        "word_bigram": word_bi,
-        "char": char,
-        "word_char": FeatureUnion([("word", word_bi), ("char", char)]),
-    }
-    if classifier == "lr":
-        estimator: Any = LogisticRegression(
-            C=c_value,
-            max_iter=3000,
-            class_weight=class_weight,
-            solver="liblinear",
-            random_state=seed,
-        )
-    elif classifier == "svm":
-        estimator = CalibratedClassifierCV(
-            LinearSVC(
-                C=c_value,
-                class_weight=class_weight,
-                random_state=seed,
-                max_iter=5000,
-            ),
-            method="sigmoid",
-            cv=3,
-        )
-    else:
-        raise ValueError(f"Unsupported classifier: {classifier}")
-    return Pipeline([("features", representations[representation]), ("clf", estimator)])
-
-
-BASELINE_SPECS: Tuple[Tuple[str, str, str | None], ...] = (
-    ("word_unigram", "lr", None),
-    ("word_bigram", "lr", None),
-    ("char", "lr", None),
-    ("word_char", "lr", None),
-    ("word_unigram", "svm", None),
-    ("word_bigram", "svm", None),
-    ("word_bigram", "lr", "balanced"),
-    ("word_char", "svm", "balanced"),
-)
-
-
-def _top_linear_features(model: Pipeline, top_n: int = 30) -> Dict[str, List[Dict[str, Any]]]:
-    """Extract positive/negative unigram and bigram weights from word LR."""
-    vectorizer = model.named_steps["features"]
-    classifier = model.named_steps["clf"]
-    if not isinstance(vectorizer, TfidfVectorizer) or not hasattr(classifier, "coef_"):
-        return {}
-    names = np.asarray(vectorizer.get_feature_names_out())
-    weights = np.asarray(classifier.coef_[0])
-    output: Dict[str, List[Dict[str, Any]]] = {}
-    for size, label in ((1, "unigram"), (2, "bigram")):
-        mask = np.asarray([len(name.split()) == size for name in names])
-        indices = np.flatnonzero(mask)
-        if not len(indices):
-            continue
-        order = indices[np.argsort(weights[indices])]
-        output[f"negative_{label}"] = [
-            {"feature": str(names[index]), "weight": float(weights[index])}
-            for index in order[:top_n]
-        ]
-        output[f"positive_{label}"] = [
-            {"feature": str(names[index]), "weight": float(weights[index])}
-            for index in order[-top_n:][::-1]
-        ]
-    return output
-
-
-def run_baseline_suite(
-    sentence_df: pd.DataFrame,
-    splits: Mapping[str, np.ndarray],
-    report_dir: Path,
-    seeds: Sequence[int],
-    threshold_grid: Sequence[float],
-    input_mode: str = "sentence",
-) -> pd.DataFrame:
-    """Run eight declared TF-IDF baselines on the shared protocol.
-
-    Regularization is selected by validation PR-AUC, then the decision threshold
-    is selected by validation F1. The fitted train-only model is not refit after
-    threshold selection, keeping its probability scale unchanged.
-    """
-    texts = np.asarray(build_model_inputs(sentence_df, input_mode), dtype=object)
-    labels = sentence_df["label"].to_numpy(dtype=int)
-    train_idx = np.asarray(splits["train"], dtype=int)
-    val_idx = np.asarray(splits["val"], dtype=int)
-    test_idx = np.asarray(splits["test"], dtype=int)
-    ensure_dir(report_dir)
-
-    rows: List[Dict[str, Any]] = []
-    features_written = False
-    for representation, classifier, class_weight in BASELINE_SPECS:
-        experiment = f"{representation}_{classifier}_{class_weight or 'unweighted'}"
-        run_metrics: List[Mapping[str, float]] = []
-        for seed in seeds:
-            candidates: List[Tuple[float, float, Pipeline, np.ndarray]] = []
-            for c_value in (0.01, 0.1, 1.0, 10.0):
-                model = _baseline_pipeline(
-                    representation, classifier, class_weight, int(seed), c_value
-                )
-                model.fit(texts[train_idx], labels[train_idx])
-                val_probability = model.predict_proba(texts[val_idx])[:, 1]
-                val_metrics = classification_metrics(labels[val_idx], val_probability, 0.5)
-                candidates.append((val_metrics["pr_auc"], c_value, model, val_probability))
-            _, best_c, best_model, val_probability = max(candidates, key=lambda item: item[0])
-            threshold, _ = find_best_threshold(
-                labels[val_idx], val_probability, threshold_grid, metric="f1"
-            )
-            test_probability = best_model.predict_proba(texts[test_idx])[:, 1]
-            metrics = classification_metrics(labels[test_idx], test_probability, threshold)
-            run_metrics.append({key: value for key, value in metrics.items() if np.isscalar(value)})
-            rows.append({
-                "experiment": experiment,
-                "representation": representation,
-                "classifier": classifier,
-                "class_weight": class_weight or "none",
-                "seed": int(seed),
-                "best_c": float(best_c),
-                **{key: value for key, value in metrics.items() if key != "confusion_matrix"},
-            })
-            prediction = build_prediction_frame(sentence_df, test_idx, test_probability, threshold)
-            prediction.to_csv(report_dir / f"{experiment}_seed_{seed}_predictions.csv", index=False)
-
-            if (
-                not features_written
-                and representation == "word_bigram"
-                and classifier == "lr"
-                and class_weight is None
-            ):
-                save_json(_top_linear_features(best_model), report_dir / "tfidf_top_features.json")
-                features_written = True
-        save_json(
-            aggregate_seed_metrics(run_metrics),
-            report_dir / f"{experiment}_seed_summary.json",
-        )
-    result = pd.DataFrame(rows)
-    result.to_csv(report_dir / "baseline_results.csv", index=False)
-    return result
 
 
 def export_error_audit(

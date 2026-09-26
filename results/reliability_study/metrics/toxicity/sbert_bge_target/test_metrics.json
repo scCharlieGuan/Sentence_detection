@@ -1,0 +1,225 @@
+{
+  "model_name": "sbert_lr",
+  "input_mode": "sentence",
+  "seed": 42,
+  "best_params": {
+    "C": 1.0
+  },
+  "hyperparameter_tuning": {
+    "enabled": true,
+    "search_method": "grid_search",
+    "scoring": "average_precision",
+    "cv_folds": 5,
+    "best_score": 0.343113965371853,
+    "best_params": {
+      "C": 1.0
+    },
+    "n_candidates": 4
+  },
+  "threshold": 0.45,
+  "threshold_metric": "f1",
+  "validation_threshold_score": 0.3686635944700461,
+  "validation_metrics": {
+    "accuracy": 0.6806526806526807,
+    "precision": 0.273972602739726,
+    "recall": 0.5633802816901409,
+    "f1": 0.3686635944700461,
+    "f0.5": 0.3053435114503817,
+    "f2": 0.46511627906976744,
+    "macro_f1": 0.5774675226640402,
+    "roc_auc": 0.6920292705956409,
+    "pr_auc": 0.31434304002390845,
+    "prevalence": 0.1655011655011655,
+    "pr_auc_lift": 1.899340340426151,
+    "threshold": 0.45,
+    "positive_prediction_rate": 0.34032634032634035,
+    "confusion_matrix": [
+      [
+        252,
+        106
+      ],
+      [
+        31,
+        40
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.618510158013544,
+    "precision": 0.2512820512820513,
+    "recall": 0.6805555555555556,
+    "f1": 0.36704119850187267,
+    "f0.5": 0.2875586854460094,
+    "f2": 0.5072463768115942,
+    "macro_f1": 0.5470100984431818,
+    "roc_auc": 0.6733677747828691,
+    "pr_auc": 0.3302368769124175,
+    "prevalence": 0.16252821670428894,
+    "pr_auc_lift": 2.0318741176694575,
+    "threshold": 0.45,
+    "positive_prediction_rate": 0.4401805869074492,
+    "confusion_matrix": [
+      [
+        225,
+        146
+      ],
+      [
+        23,
+        49
+      ]
+    ]
+  },
+  "runtime_seconds": 38.09142109999084,
+  "dataset_sha256": "cbb3cabf8249d351cdd3c86bb867e9e2059320009c36ed666ae505bec6c10aba",
+  "split_strategy": "near_duplicate",
+  "actual_split_group_column": "near_duplicate_group_id",
+  "effective_model_config": {
+    "name": "sbert_lr",
+    "input_mode": "sentence",
+    "pretrained_model_name": "albert-base-v2",
+    "sentence_transformer_name": "BAAI/bge-base-en-v1.5",
+    "embedding_normalization": "l2",
+    "class_weight": "balanced",
+    "num_labels": 2,
+    "max_length": 128,
+    "sbert_batch_size": 32,
+    "tfidf_ngram_range": [
+      1,
+      2
+    ],
+    "tfidf_min_df": 2,
+    "tfidf_max_df": 0.95,
+    "logistic_c": 1.0,
+    "mlp_hidden_sizes": [
+      128
+    ],
+    "mlp_alpha": 0.001,
+    "mlp_max_iter": 300
+  },
+  "effective_training_config": {
+    "batch_size": 16,
+    "learning_rate": 1e-05,
+    "encoder_learning_rate": 1e-05,
+    "head_learning_rate": 5e-05,
+    "epochs": 6,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "gradient_accumulation_steps": 1,
+    "gradient_clip_norm": 1.0,
+    "mixed_precision": true,
+    "use_patience": true,
+    "patience": 2,
+    "freeze_strategy": "full",
+    "unfreeze_last_groups": 1,
+    "loss": "cross_entropy",
+    "focal_gamma": 2.0,
+    "imbalance_method": "none",
+    "threshold_grid": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "threshold_metric": "f1",
+    "primary_selection_metric": "pr_auc",
+    "train_final_on_train_val": false,
+    "hyperparameter_tuning": {
+      "enabled": true,
+      "cv_folds": 5,
+      "scoring": "average_precision",
+      "n_jobs": 2,
+      "verbose": 0,
+      "grid_search_models": [
+        "tfidf_lr",
+        "tfidf_linear_svm",
+        "sbert_lr"
+      ],
+      "random_search_models": [],
+      "models": {
+        "tfidf_lr": {
+          "params": {
+            "tfidf__ngram_range": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "tfidf__min_df": [
+              2,
+              5
+            ],
+            "tfidf__max_df": [
+              0.8,
+              0.95,
+              1.0
+            ],
+            "clf__C": [
+              0.01,
+              0.1,
+              1.0,
+              10.0
+            ]
+          }
+        },
+        "tfidf_linear_svm": {
+          "params": {
+            "tfidf__ngram_range": [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "tfidf__min_df": [
+              2,
+              5
+            ],
+            "tfidf__max_df": [
+              0.8,
+              0.95,
+              1.0
+            ],
+            "clf__estimator__C": [
+              0.01,
+              0.1,
+              1.0,
+              10.0
+            ]
+          }
+        },
+        "sbert_lr": {
+          "params": {
+            "C": [
+              0.01,
+              0.1,
+              1.0,
+              10.0
+            ]
+          }
+        }
+      }
+    }
+  }
+}

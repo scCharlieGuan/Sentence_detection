@@ -1,0 +1,622 @@
+{
+  "vocabulary_settings": {
+    "analyzer": "word",
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "max_df": 0.95,
+    "sublinear_tf": true
+  },
+  "negative_unigram": [
+    {
+      "feature": "can",
+      "weight": -0.9236705401843347
+    },
+    {
+      "feature": "and",
+      "weight": -0.8897752746588997
+    },
+    {
+      "feature": "especially",
+      "weight": -0.7911447153374233
+    },
+    {
+      "feature": "support",
+      "weight": -0.6987759678944575
+    },
+    {
+      "feature": "client",
+      "weight": -0.6927286771639466
+    },
+    {
+      "feature": "or",
+      "weight": -0.6777253958330495
+    },
+    {
+      "feature": "professional",
+      "weight": -0.6324955599530978
+    },
+    {
+      "feature": "safety",
+      "weight": -0.6269687743945258
+    },
+    {
+      "feature": "alone",
+      "weight": -0.6269119555803426
+    },
+    {
+      "feature": "help",
+      "weight": -0.6151793561435374
+    },
+    {
+      "feature": "process",
+      "weight": -0.605003637779112
+    },
+    {
+      "feature": "difficult",
+      "weight": -0.6001971427330979
+    },
+    {
+      "feature": "grief",
+      "weight": -0.5928070493490111
+    },
+    {
+      "feature": "remember",
+      "weight": -0.592769785042243
+    },
+    {
+      "feature": "also",
+      "weight": -0.5872813050178713
+    },
+    {
+      "feature": "stress",
+      "weight": -0.5684949843380291
+    },
+    {
+      "feature": "seeking",
+      "weight": -0.5659322327469787
+    },
+    {
+      "feature": "explore",
+      "weight": -0.5485615653598888
+    },
+    {
+      "feature": "safe",
+      "weight": -0.5392515809708168
+    },
+    {
+      "feature": "possible",
+      "weight": -0.5373088597072373
+    },
+    {
+      "feature": "work",
+      "weight": -0.5359043975174833
+    },
+    {
+      "feature": "helpful",
+      "weight": -0.5327090774970986
+    },
+    {
+      "feature": "often",
+      "weight": -0.5198185286216548
+    },
+    {
+      "feature": "healing",
+      "weight": -0.5158107177999486
+    },
+    {
+      "feature": "resources",
+      "weight": -0.5039930152092476
+    },
+    {
+      "feature": "strategies",
+      "weight": -0.49963215037799324
+    },
+    {
+      "feature": "well",
+      "weight": -0.496259582619601
+    },
+    {
+      "feature": "personal",
+      "weight": -0.4924480149090244
+    },
+    {
+      "feature": "understandable",
+      "weight": -0.46588715834708694
+    },
+    {
+      "feature": "valid",
+      "weight": -0.4572431439666165
+    }
+  ],
+  "positive_unigram": [
+    {
+      "feature": "will",
+      "weight": 1.3540417066247832
+    },
+    {
+      "feature": "you",
+      "weight": 1.3090355710477124
+    },
+    {
+      "feature": "the",
+      "weight": 1.202189036671892
+    },
+    {
+      "feature": "is",
+      "weight": 1.1122542267478814
+    },
+    {
+      "feature": "we",
+      "weight": 1.103021136309131
+    },
+    {
+      "feature": "really",
+      "weight": 1.077302716205541
+    },
+    {
+      "feature": "because",
+      "weight": 1.0762598852552936
+    },
+    {
+      "feature": "her",
+      "weight": 0.9904014542264742
+    },
+    {
+      "feature": "do",
+      "weight": 0.9853638213975967
+    },
+    {
+      "feature": "no",
+      "weight": 0.8867539343463029
+    },
+    {
+      "feature": "all",
+      "weight": 0.8862552865693785
+    },
+    {
+      "feature": "maybe",
+      "weight": 0.8813123767694894
+    },
+    {
+      "feature": "much",
+      "weight": 0.876915433158633
+    },
+    {
+      "feature": "only",
+      "weight": 0.8281222942562432
+    },
+    {
+      "feature": "relationship",
+      "weight": 0.8015101725247281
+    },
+    {
+      "feature": "two",
+      "weight": 0.7966146751471913
+    },
+    {
+      "feature": "know",
+      "weight": 0.7941033727854073
+    },
+    {
+      "feature": "fear",
+      "weight": 0.7896284755451863
+    },
+    {
+      "feature": "now",
+      "weight": 0.7814087163093756
+    },
+    {
+      "feature": "up",
+      "weight": 0.7808529845227693
+    },
+    {
+      "feature": "right",
+      "weight": 0.7661292377675227
+    },
+    {
+      "feature": "she",
+      "weight": 0.7623194443208277
+    },
+    {
+      "feature": "ll",
+      "weight": 0.758748998294586
+    },
+    {
+      "feature": "if",
+      "weight": 0.7389351940619191
+    },
+    {
+      "feature": "over",
+      "weight": 0.732933487695853
+    },
+    {
+      "feature": "finding",
+      "weight": 0.7115918291439011
+    },
+    {
+      "feature": "unable",
+      "weight": 0.7110997099019071
+    },
+    {
+      "feature": "temporary",
+      "weight": 0.7005580390317989
+    },
+    {
+      "feature": "people",
+      "weight": 0.6807340736763592
+    },
+    {
+      "feature": "good",
+      "weight": 0.677195383637099
+    }
+  ],
+  "negative_bigram": [
+    {
+      "feature": "when you",
+      "weight": -0.6388883025705017
+    },
+    {
+      "feature": "can be",
+      "weight": -0.6369024857886403
+    },
+    {
+      "feature": "understandable that",
+      "weight": -0.5875514260992012
+    },
+    {
+      "feature": "can help",
+      "weight": -0.580551816850222
+    },
+    {
+      "feature": "not alone",
+      "weight": -0.5498962117247433
+    },
+    {
+      "feature": "your child",
+      "weight": -0.5167391635088818
+    },
+    {
+      "feature": "out to",
+      "weight": -0.4882730086843255
+    },
+    {
+      "feature": "there is",
+      "weight": -0.47962230062737843
+    },
+    {
+      "feature": "that your",
+      "weight": -0.46498888848252484
+    },
+    {
+      "feature": "so sorry",
+      "weight": -0.43696639197638
+    },
+    {
+      "feature": "you re",
+      "weight": -0.4341675501033649
+    },
+    {
+      "feature": "for help",
+      "weight": -0.41941047676072063
+    },
+    {
+      "feature": "your safety",
+      "weight": -0.40551329688590243
+    },
+    {
+      "feature": "re going",
+      "weight": -0.4052282398475043
+    },
+    {
+      "feature": "alone and",
+      "weight": -0.3973407471255341
+    },
+    {
+      "feature": "your emotions",
+      "weight": -0.3960353793345093
+    },
+    {
+      "feature": "through this",
+      "weight": -0.3956466299752995
+    },
+    {
+      "feature": "allow yourself",
+      "weight": -0.39401090163296515
+    },
+    {
+      "feature": "help you",
+      "weight": -0.39320816616865323
+    },
+    {
+      "feature": "be helpful",
+      "weight": -0.3864774907457656
+    },
+    {
+      "feature": "and it",
+      "weight": -0.38154667455232705
+    },
+    {
+      "feature": "remember you",
+      "weight": -0.3785386718110815
+    },
+    {
+      "feature": "the client",
+      "weight": -0.376984975961218
+    },
+    {
+      "feature": "support from",
+      "weight": -0.374770821043248
+    },
+    {
+      "feature": "and there",
+      "weight": -0.37138822904265123
+    },
+    {
+      "feature": "they can",
+      "weight": -0.3706822441639318
+    },
+    {
+      "feature": "support and",
+      "weight": -0.36026055730946444
+    },
+    {
+      "feature": "with your",
+      "weight": -0.35887936955143396
+    },
+    {
+      "feature": "for your",
+      "weight": -0.35434549756370887
+    },
+    {
+      "feature": "yourself to",
+      "weight": -0.352364996950777
+    }
+  ],
+  "positive_bigram": [
+    {
+      "feature": "you will",
+      "weight": 1.1449095991886376
+    },
+    {
+      "feature": "at the",
+      "weight": 0.780597257709924
+    },
+    {
+      "feature": "you need",
+      "weight": 0.7770225004628503
+    },
+    {
+      "feature": "with her",
+      "weight": 0.7175017299323063
+    },
+    {
+      "feature": "but unable",
+      "weight": 0.7110997099019071
+    },
+    {
+      "feature": "unable to",
+      "weight": 0.7110997099019071
+    },
+    {
+      "feature": "to provide",
+      "weight": 0.6758391298549188
+    },
+    {
+      "feature": "it out",
+      "weight": 0.633789801547707
+    },
+    {
+      "feature": "provide the",
+      "weight": 0.621608630231012
+    },
+    {
+      "feature": "the help",
+      "weight": 0.6214829901417527
+    },
+    {
+      "feature": "help that",
+      "weight": 0.6180124152915257
+    },
+    {
+      "feature": "not the",
+      "weight": 0.6069523300089352
+    },
+    {
+      "feature": "the best",
+      "weight": 0.6028413814070613
+    },
+    {
+      "feature": "feeling this",
+      "weight": 0.5914404893262223
+    },
+    {
+      "feature": "way but",
+      "weight": 0.5914404893262223
+    },
+    {
+      "feature": "you are",
+      "weight": 0.5834594421117416
+    },
+    {
+      "feature": "in you",
+      "weight": 0.5515267284232388
+    },
+    {
+      "feature": "is natural",
+      "weight": 0.5222174514023554
+    },
+    {
+      "feature": "in moving",
+      "weight": 0.521435112737286
+    },
+    {
+      "feature": "to the",
+      "weight": 0.5168788599366774
+    },
+    {
+      "feature": "relationship and",
+      "weight": 0.5162029224905978
+    },
+    {
+      "feature": "we are",
+      "weight": 0.5160805868368253
+    },
+    {
+      "feature": "you you",
+      "weight": 0.5015639781349137
+    },
+    {
+      "feature": "the intensity",
+      "weight": 0.49947113170978735
+    },
+    {
+      "feature": "moving on",
+      "weight": 0.49558753427666896
+    },
+    {
+      "feature": "might be",
+      "weight": 0.48761309523792107
+    },
+    {
+      "feature": "finding therapist",
+      "weight": 0.4866504349429944
+    },
+    {
+      "feature": "to do",
+      "weight": 0.48590468246895824
+    },
+    {
+      "feature": "and other",
+      "weight": 0.4801781413736148
+    },
+    {
+      "feature": "respond to",
+      "weight": 0.47750023618074244
+    }
+  ],
+  "potential_responder_or_topic_features": [
+    {
+      "feature": "and",
+      "weight": -0.8897752746588997
+    },
+    {
+      "feature": "relationship",
+      "weight": 0.8015101725247281
+    },
+    {
+      "feature": "professional",
+      "weight": -0.6324955599530978
+    },
+    {
+      "feature": "grief",
+      "weight": -0.5928070493490111
+    },
+    {
+      "feature": "relationship and",
+      "weight": 0.5162029224905978
+    },
+    {
+      "feature": "change",
+      "weight": 0.5090930020595789
+    },
+    {
+      "feature": "and other",
+      "weight": 0.4801781413736148
+    },
+    {
+      "feature": "you change",
+      "weight": 0.46377797966108436
+    },
+    {
+      "feature": "you and",
+      "weight": 0.4457424050190198
+    },
+    {
+      "feature": "being and",
+      "weight": 0.4429516354622912
+    },
+    {
+      "feature": "and the",
+      "weight": 0.4428200203457073
+    },
+    {
+      "feature": "change your",
+      "weight": 0.42938090502876625
+    },
+    {
+      "feature": "and others",
+      "weight": 0.4204223480397002
+    },
+    {
+      "feature": "and when",
+      "weight": 0.40501484480169514
+    },
+    {
+      "feature": "alone and",
+      "weight": -0.3973407471255341
+    },
+    {
+      "feature": "abusive relationship",
+      "weight": 0.39264451870497297
+    },
+    {
+      "feature": "and talk",
+      "weight": 0.3898998006981881
+    },
+    {
+      "feature": "and it",
+      "weight": -0.38154667455232705
+    },
+    {
+      "feature": "of depression",
+      "weight": 0.3759272227527485
+    },
+    {
+      "feature": "and there",
+      "weight": -0.37138822904265123
+    },
+    {
+      "feature": "support and",
+      "weight": -0.36026055730946444
+    },
+    {
+      "feature": "and desire",
+      "weight": 0.3519810298998714
+    },
+    {
+      "feature": "and more",
+      "weight": 0.3473501942343934
+    },
+    {
+      "feature": "self harm",
+      "weight": -0.3404444045764839
+    },
+    {
+      "feature": "safe and",
+      "weight": -0.33448986521930263
+    },
+    {
+      "feature": "and if",
+      "weight": 0.33133483922594836
+    },
+    {
+      "feature": "and therapist",
+      "weight": 0.3298630051667685
+    },
+    {
+      "feature": "family doctor",
+      "weight": 0.32533330520199183
+    },
+    {
+      "feature": "and caring",
+      "weight": 0.3190914398522749
+    },
+    {
+      "feature": "healthier relationships",
+      "weight": 0.30462653168871073
+    }
+  ]
+}

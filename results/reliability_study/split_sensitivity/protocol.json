@@ -1,0 +1,36 @@
+{
+  "label_snapshot_sha256": "cbb3cabf8249d351cdd3c86bb867e9e2059320009c36ed666ae505bec6c10aba",
+  "seeds_are_split_seeds": true,
+  "model": "word (1,2)-gram TF-IDF + LogisticRegression",
+  "model_selection": "C selected on validation PR-AUC; threshold selected on validation F1",
+  "duplicate_clustering_uses_labels": false,
+  "conditions": {
+    "naive_sentence": {
+      "split_strategy": "sentence"
+    },
+    "response_grouped": {
+      "split_strategy": "group",
+      "split_group_column": "response_id"
+    },
+    "question_grouped": {
+      "split_strategy": "group",
+      "split_group_column": "questionID"
+    },
+    "near_duplicate_question_grouped": {
+      "split_strategy": "near_duplicate",
+      "split_group_column": "questionID",
+      "near_duplicate_base_group_column": "questionID",
+      "near_duplicate_threshold": 0.9,
+      "near_duplicate_min_characters": 30,
+      "near_duplicate_assignment_attempts": 500
+    },
+    "responder_grouped": {
+      "split_strategy": "group",
+      "split_group_column": "responder"
+    },
+    "topic_grouped": {
+      "split_strategy": "group",
+      "split_group_column": "topic"
+    }
+  }
+}

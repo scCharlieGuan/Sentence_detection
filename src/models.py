@@ -33,10 +33,25 @@ def build_model(model_name: str, model_cfg: Dict[str, Any], seed: int) -> Any:
     class_weight = model_cfg.get("class_weight", "balanced")
     if class_weight == "none":
         class_weight = None
+    word_ngram_range = tuple(model_cfg.get("tfidf_ngram_range", (1, 2)))
+    word_min_df = int(model_cfg.get("tfidf_min_df", 2))
+    word_max_df = float(model_cfg.get("tfidf_max_df", 0.95))
+    logistic_c = float(model_cfg.get("logistic_c", 1.0))
     if model_name in {"tfidf_lr", "tfidf_word_lr"}:
         return Pipeline([
-            ("tfidf", TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_df=0.95, sublinear_tf=True)),
-            ("clf", LogisticRegression(max_iter=3000, class_weight=class_weight, solver="liblinear", random_state=seed)),
+            ("tfidf", TfidfVectorizer(
+                ngram_range=word_ngram_range,
+                min_df=word_min_df,
+                max_df=word_max_df,
+                sublinear_tf=True,
+            )),
+            ("clf", LogisticRegression(
+                C=logistic_c,
+                max_iter=3000,
+                class_weight=class_weight,
+                solver="liblinear",
+                random_state=seed,
+            )),
         ])
     if model_name == "tfidf_char_lr":
         return Pipeline([
@@ -45,15 +60,15 @@ def build_model(model_name: str, model_cfg: Dict[str, Any], seed: int) -> Any:
                 max_features=100_000, sublinear_tf=True,
             )),
             ("clf", LogisticRegression(
-                max_iter=3000, class_weight=class_weight,
+                C=logistic_c, max_iter=3000, class_weight=class_weight,
                 solver="liblinear", random_state=seed,
             )),
         ])
     if model_name == "tfidf_word_char_lr":
         features = FeatureUnion([
             ("word", TfidfVectorizer(
-                analyzer="word", ngram_range=(1, 2), min_df=2,
-                max_df=0.95, sublinear_tf=True,
+                analyzer="word", ngram_range=word_ngram_range, min_df=word_min_df,
+                max_df=word_max_df, sublinear_tf=True,
             )),
             ("char", TfidfVectorizer(
                 analyzer="char_wb", ngram_range=(3, 5), min_df=2,
@@ -63,7 +78,7 @@ def build_model(model_name: str, model_cfg: Dict[str, Any], seed: int) -> Any:
         return Pipeline([
             ("features", features),
             ("clf", LogisticRegression(
-                max_iter=3000, class_weight=class_weight,
+                C=logistic_c, max_iter=3000, class_weight=class_weight,
                 solver="liblinear", random_state=seed,
             )),
         ])

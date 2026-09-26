@@ -1,0 +1,13 @@
+label_rule,split,min_annotators,reliable_only,samples,positive_samples,positive_rate
+any_support,all,1,False,2907,477,0.16408668730650156
+any_support,train,1,False,2035,334,0.16412776412776411
+any_support,val,1,False,429,71,0.1655011655011655
+any_support,test,1,False,443,72,0.16252821670428894
+consensus_2,all,2,False,2907,124,0.042655658754729965
+consensus_2,train,2,False,2035,85,0.04176904176904177
+consensus_2,val,2,False,429,13,0.030303030303030304
+consensus_2,test,2,False,443,26,0.05869074492099323
+consensus_2_reliable,all,2,True,2907,78,0.026831785345717233
+consensus_2_reliable,train,2,True,2035,57,0.02800982800982801
+consensus_2_reliable,val,2,True,429,9,0.02097902097902098
+consensus_2_reliable,test,2,True,443,12,0.02708803611738149

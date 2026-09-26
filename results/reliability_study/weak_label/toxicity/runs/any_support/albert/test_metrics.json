@@ -1,0 +1,72 @@
+{
+  "model_name": "albert",
+  "input_mode": "sentence",
+  "seed": 42,
+  "best_epoch": 6,
+  "selection_metric": "pr_auc",
+  "best_validation_selection_score": 0.3849993966262853,
+  "threshold": 0.45,
+  "threshold_metric": "f1",
+  "validation_threshold_score": 0.39344262295081966,
+  "validation_metrics": {
+    "accuracy": 0.8275058275058275,
+    "precision": 0.47058823529411764,
+    "recall": 0.3380281690140845,
+    "f1": 0.39344262295081966,
+    "f0.5": 0.43636363636363634,
+    "f2": 0.3582089552238806,
+    "macro_f1": 0.646449572344975,
+    "roc_auc": 0.6931308521520182,
+    "pr_auc": 0.3849993966262853,
+    "prevalence": 0.1655011655011655,
+    "pr_auc_lift": 2.3262639598968504,
+    "threshold": 0.45,
+    "positive_prediction_rate": 0.11888111888111888,
+    "confusion_matrix": [
+      [
+        331,
+        27
+      ],
+      [
+        47,
+        24
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.7900677200902935,
+    "precision": 0.352112676056338,
+    "recall": 0.3472222222222222,
+    "f1": 0.34965034965034963,
+    "f0.5": 0.351123595505618,
+    "f2": 0.34818941504178275,
+    "macro_f1": 0.612241056386413,
+    "roc_auc": 0.6638963761605271,
+    "pr_auc": 0.3313308928194066,
+    "prevalence": 0.16252821670428894,
+    "pr_auc_lift": 2.0386053544305156,
+    "threshold": 0.45,
+    "positive_prediction_rate": 0.16027088036117382,
+    "confusion_matrix": [
+      [
+        325,
+        46
+      ],
+      [
+        47,
+        25
+      ]
+    ],
+    "loss": 0.8985344342399666
+  },
+  "dataset_sha256": "cbb3cabf8249d351cdd3c86bb867e9e2059320009c36ed666ae505bec6c10aba",
+  "split_strategy": "near_duplicate",
+  "actual_split_group_column": "near_duplicate_group_id",
+  "training_configuration": {
+    "loss": "weighted_cross_entropy",
+    "imbalance_method": "none",
+    "freeze_strategy": "full",
+    "encoder_learning_rate": 1e-05,
+    "head_learning_rate": 5e-05
+  }
+}

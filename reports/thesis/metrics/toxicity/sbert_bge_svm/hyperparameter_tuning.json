@@ -1,6 +1,0 @@
-{
-  "model_name": "sbert_linear_svm",
-  "best_params": {},
-  "enabled": false,
-  "reason": "no_parameter_grid"
-}

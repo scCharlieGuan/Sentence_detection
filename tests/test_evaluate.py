@@ -1,7 +1,12 @@
 """Tests for protocol-critical evaluation helpers."""
 import numpy as np
 
-from src.evaluate import classification_metrics, find_best_threshold, mcnemar_exact
+from src.evaluate import (
+    bootstrap_metric_intervals,
+    classification_metrics,
+    find_best_threshold,
+    mcnemar_exact,
+)
 
 
 def test_metrics_include_requested_imbalance_measures() -> None:
@@ -33,3 +38,13 @@ def test_mcnemar_requires_paired_correctness() -> None:
         np.asarray([1, 0, 1, 1]),
     )
     assert result["discordant"] == 3
+
+
+def test_bootstrap_intervals_are_reproducible_and_contain_estimate_fields() -> None:
+    """Fixed seeds must reproduce fixed-test sampling uncertainty."""
+    y = np.asarray([0, 0, 0, 1, 1, 1])
+    probability = np.asarray([0.1, 0.2, 0.7, 0.4, 0.8, 0.9])
+    first = bootstrap_metric_intervals(y, probability, 0.5, n_bootstrap=50, seed=7)
+    second = bootstrap_metric_intervals(y, probability, 0.5, n_bootstrap=50, seed=7)
+    assert first == second
+    assert {"estimate", "ci_low", "ci_high", "valid_replicates"} <= set(first["f1"])

@@ -1,0 +1,320 @@
+{
+  "audit_scope": "read_only_phase_1",
+  "raw_data": {
+    "path": "data\\raw\\CounselBench.csv",
+    "sha256": "9d2d2201da6dd4de3e0ad986e101de894606984174a40053443f672a3d24a7ee",
+    "rows": 2000,
+    "questions": 100,
+    "responses_by_question_and_responder": 400,
+    "unique_response_texts": 372,
+    "responders": [
+      "gemini",
+      "gpt4",
+      "human",
+      "llama3"
+    ],
+    "topics": 20,
+    "task_fields": {
+      "toxicity": {
+        "score_counts": {
+          "1": 1251,
+          "3": 297,
+          "4": 219,
+          "2": 171,
+          "5": 62
+        },
+        "nonempty_copy_by_score": {
+          "1": {
+            "empty": 1166,
+            "nonempty": 85
+          },
+          "2": {
+            "empty": 66,
+            "nonempty": 105
+          },
+          "3": {
+            "empty": 241,
+            "nonempty": 56
+          },
+          "4": {
+            "empty": 18,
+            "nonempty": 201
+          },
+          "5": {
+            "empty": 3,
+            "nonempty": 59
+          }
+        }
+      },
+      "factual": {
+        "score_counts": {
+          "4": 1147,
+          "3": 546,
+          "2": 147,
+          "1": 90,
+          "I am not sure": 70
+        },
+        "nonempty_copy_by_score": {
+          "1": {
+            "empty": 21,
+            "nonempty": 69
+          },
+          "2": {
+            "empty": 12,
+            "nonempty": 135
+          },
+          "3": {
+            "empty": 363,
+            "nonempty": 183
+          },
+          "4": {
+            "empty": 1050,
+            "nonempty": 97
+          },
+          "I am not sure": {
+            "empty": 54,
+            "nonempty": 16
+          }
+        }
+      },
+      "medical": {
+        "score_counts": {
+          "No": 1729,
+          "Yes": 220,
+          "I am not sure": 51
+        },
+        "nonempty_copy_by_score": {
+          "I am not sure": {
+            "empty": 25,
+            "nonempty": 26
+          },
+          "No": {
+            "empty": 1585,
+            "nonempty": 144
+          },
+          "Yes": {
+            "empty": 6,
+            "nonempty": 214
+          }
+        }
+      }
+    }
+  },
+  "prepared_toxicity": {
+    "rows": 2904,
+    "responses": 400,
+    "positive": 635,
+    "prevalence": 0.21866391184573003,
+    "split_rows": {
+      "train": 2013,
+      "val": 470,
+      "test": 421
+    },
+    "response_text_overlap": {
+      "train_val": 1,
+      "train_test": 2,
+      "val_test": 1
+    },
+    "manifest_rows": 2904,
+    "manifest_dataset_sha256": "a9e06c4f9c4ea1d8f3f41da5f381df70c5b4a6755f75b568ebce799395576dba"
+  },
+  "alignment": {
+    "total_spans": 405,
+    "method_counts": {
+      "exact_char_overlap": 224,
+      "fuzzy_sentence_or_window": 128,
+      "unmatched": 44,
+      "all_response": 9
+    },
+    "fuzzy_spans": 128,
+    "fuzzy_cross_sentence_spans": 125,
+    "fuzzy_over_configured_max_window_3": 70,
+    "fuzzy_max_matched_sentences": 16,
+    "fuzzy_matched_sentence_count_distribution": {
+      "1": 3,
+      "2": 18,
+      "3": 37,
+      "4": 42,
+      "5": 18,
+      "6": 2,
+      "8": 3,
+      "9": 1,
+      "10": 1,
+      "12": 1,
+      "15": 1,
+      "16": 1
+    },
+    "failed_alignments": 44,
+    "log_has_source_scores": false,
+    "log_has_failure_reason_code": false
+  },
+  "artifact_consistency": {
+    "current_test_rows": 421,
+    "prediction_files_checked": 26,
+    "prediction_files_matching_current_test_rows": 4,
+    "prediction_files": [
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_classifier_only_weighted\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_focal\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_weighted_ce\\seed_43\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_weighted_ce\\seed_44\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_weighted_ce\\seed_45\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_weighted_ce\\seed_46\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_weighted_ce\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\albert_weighted_sampler\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_mlp\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_previous_target\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_question_target\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_question_window\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_raw\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_response\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_standardized\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_svm\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_target_next\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_bge_window\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_lr\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\sbert_minilm_lr\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\metrics\\toxicity\\tfidf_lr\\test_predictions.csv",
+        "rows": 417,
+        "matches_current_test_rows": false,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\weak_label\\toxicity\\runs\\any_support\\albert\\test_predictions.csv",
+        "rows": 421,
+        "matches_current_test_rows": true,
+        "labels_match_current_original_rule": true
+      },
+      {
+        "path": "reports\\thesis\\weak_label\\toxicity\\runs\\any_support\\tfidf\\test_predictions.csv",
+        "rows": 421,
+        "matches_current_test_rows": true,
+        "labels_match_current_original_rule": true
+      },
+      {
+        "path": "reports\\thesis\\weak_label\\toxicity\\runs\\consensus_2\\albert\\test_predictions.csv",
+        "rows": 421,
+        "matches_current_test_rows": true,
+        "labels_match_current_original_rule": false
+      },
+      {
+        "path": "reports\\thesis\\weak_label\\toxicity\\runs\\consensus_2\\tfidf\\test_predictions.csv",
+        "rows": 421,
+        "matches_current_test_rows": true,
+        "labels_match_current_original_rule": false
+      }
+    ],
+    "existing_dataset_audit_is_stale": true
+  },
+  "test_environment": {
+    "verified_command": "C:\\Users\\15509\\anaconda3\\envs\\MentalFlow\\python.exe -m pytest -q",
+    "verified_result": "9 passed",
+    "default_pytest_issue": "default Anaconda interpreter lacks spaCy"
+  }
+}

@@ -1,13 +1,39 @@
 {
   "task": "toxicity",
   "seed": 42,
-  "rows": 2848,
-  "responses": 372,
-  "dataset_sha256": "d1d4a52577f14edb1514e3865f37f8fd22ab198d9e4137d2b85d53e24c593077",
-  "split_sizes": {
-    "train": 1969,
-    "val": 462,
-    "test": 417
+  "rows": 2904,
+  "responses": 400,
+  "unique_response_texts": 372,
+  "annotation_group_columns": [
+    "questionID",
+    "responder"
+  ],
+  "split_group_column": "questionID",
+  "reused_existing_group_assignments": true,
+  "dataset_sha256": "a9e06c4f9c4ea1d8f3f41da5f381df70c5b4a6755f75b568ebce799395576dba",
+  "split_diagnostics": {
+    "rows": {
+      "train": 2013,
+      "val": 470,
+      "test": 421
+    },
+    "group_overlap": {
+      "questionID": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "response_id": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "response_text_id": {
+        "train_val": 1,
+        "train_test": 2,
+        "val_test": 1
+      }
+    }
   },
   "test_is_model_selection_forbidden": true
 }

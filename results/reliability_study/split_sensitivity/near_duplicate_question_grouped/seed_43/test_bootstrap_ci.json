@@ -1,0 +1,38 @@
+{
+  "precision": {
+    "estimate": 0.16129032258064516,
+    "ci_low": 0.12872151524119563,
+    "ci_high": 0.19613416975722664,
+    "valid_replicates": 300
+  },
+  "recall": {
+    "estimate": 0.9859154929577465,
+    "ci_low": 0.9510902031063322,
+    "ci_high": 1.0,
+    "valid_replicates": 300
+  },
+  "f1": {
+    "estimate": 0.27722772277227725,
+    "ci_low": 0.22764227642276422,
+    "ci_high": 0.3266934865900383,
+    "valid_replicates": 300
+  },
+  "macro_f1": {
+    "estimate": 0.15961123671422262,
+    "ci_low": 0.13104633753162012,
+    "ci_high": 0.1911106340127423,
+    "valid_replicates": 300
+  },
+  "pr_auc": {
+    "estimate": 0.20805887916519628,
+    "ci_low": 0.16337041442972777,
+    "ci_high": 0.2910419846241849,
+    "valid_replicates": 300
+  },
+  "roc_auc": {
+    "estimate": 0.5840905648947448,
+    "ci_low": 0.5080854206753139,
+    "ci_high": 0.6442723268490532,
+    "valid_replicates": 300
+  }
+}

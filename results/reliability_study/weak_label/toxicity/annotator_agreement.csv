@@ -1,0 +1,5 @@
+support_bucket,sentence_count,mean_agreement_ratio,original_positive_count,original_positive_rate,any_support_positive_count,any_support_positive_rate,consensus_2_positive_count,consensus_2_positive_rate,consensus_2_reliable_positive_count,consensus_2_reliable_positive_rate
+0,2430,0.0,0,0.0,0,0.0,0,0.0,0,0.0
+1,353,0.19999999999999998,353,1.0,353,1.0,0,0.0,0,0.0
+2,87,0.3999999999999999,87,1.0,87,1.0,87,1.0,50,0.5747126436781609
+3+,37,0.664864864864865,37,1.0,37,1.0,37,1.0,28,0.7567567567567568

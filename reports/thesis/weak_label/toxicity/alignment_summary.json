@@ -1,0 +1,47 @@
+{
+  "total_spans": 405,
+  "matched_spans": 361,
+  "matched_ratio": 0.891358024691358,
+  "unmatched_spans": 44,
+  "unmatched_ratio": 0.10864197530864197,
+  "fuzzy_spans": 128,
+  "fuzzy_cross_sentence_spans": 125,
+  "alignment_groups": {
+    "all_response": {
+      "spans": 9,
+      "ratio": 0.022222222222222223,
+      "matched_sentence_assignments": 59,
+      "cross_sentence_spans": 9,
+      "mean_similarity_score": 1.0,
+      "median_similarity_score": 1.0,
+      "mean_overlap_ratio": 1.0
+    },
+    "exact": {
+      "spans": 224,
+      "ratio": 0.5530864197530864,
+      "matched_sentence_assignments": 325,
+      "cross_sentence_spans": 44,
+      "mean_similarity_score": 1.0,
+      "median_similarity_score": 1.0,
+      "mean_overlap_ratio": 0.9987515865600388
+    },
+    "fuzzy": {
+      "spans": 128,
+      "ratio": 0.3160493827160494,
+      "matched_sentence_assignments": 506,
+      "cross_sentence_spans": 125,
+      "mean_similarity_score": 0.9941062018599613,
+      "median_similarity_score": 1.0,
+      "mean_overlap_ratio": 0.9702944120205437
+    },
+    "unmatched": {
+      "spans": 44,
+      "ratio": 0.10864197530864197,
+      "matched_sentence_assignments": 0,
+      "cross_sentence_spans": 0,
+      "mean_similarity_score": 0.36344924025164443,
+      "median_similarity_score": 0.33417935702199664,
+      "mean_overlap_ratio": 0.0
+    }
+  }
+}

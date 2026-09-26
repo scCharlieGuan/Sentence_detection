@@ -18,12 +18,19 @@ data:
   train_size: 0.70
   validation_size: 0.15
   test_size: 0.15
+  split_group_column: response_id
+  annotation_group_columns: [questionID, responder]
   spacy_model: en_core_web_sm
   min_positive_annotators: 1
   fuzzy_threshold: 0.78
   fuzzy_fallback_threshold: 0.68
   min_overlap_ratio: 0.30
   max_fuzzy_window: 3
+  # Select one contiguous candidate. Use `union` only to reproduce legacy labels.
+  fuzzy_selection_policy: best_window
+  reliable_alignment_methods: [exact_char_overlap]
+  reliable_fuzzy_threshold: 0.90
+  reliable_min_overlap_ratio: 0.50
   entire_response_values:
     - all
     - all of it
@@ -303,6 +310,26 @@ training:
           #   - "balanced"
           #   - "balanced_subsample"
 
+
+weak_labels:
+  rules:
+    any_support: {min_annotators: 1, reliable_only: false}
+    consensus_2: {min_annotators: 2, reliable_only: false}
+    consensus_2_reliable: {min_annotators: 2, reliable_only: true}
+  sensitivity:
+    rule_names: [any_support, consensus_2]
+    models: [tfidf, albert]
+    tfidf:
+      name: tfidf_lr
+      input_mode: sentence
+      class_weight: balanced
+      tfidf_ngram_range: [1, 2]
+      tfidf_min_df: 5
+      tfidf_max_df: 0.95
+      logistic_c: 0.01
+    albert:
+      input_mode: sentence
+      max_length: 128
 
 output:
   model_dir: models

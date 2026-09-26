@@ -1,0 +1,11 @@
+{
+  "count": 2907,
+  "median": 25.0,
+  "p90": 39.0,
+  "p95": 45.0,
+  "p99": 58.940000000000055,
+  "max": 107.0,
+  "max_length": 128,
+  "truncated_count": 0,
+  "truncated_ratio": 0.0
+}

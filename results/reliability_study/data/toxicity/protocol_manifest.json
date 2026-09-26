@@ -1,0 +1,68 @@
+{
+  "task": "toxicity",
+  "seed": 42,
+  "rows": 2907,
+  "responses": 400,
+  "unique_response_texts": 372,
+  "annotation_group_columns": [
+    "questionID",
+    "responder"
+  ],
+  "split_group_column": "questionID",
+  "split_strategy": "near_duplicate",
+  "actual_split_group_column": "near_duplicate_group_id",
+  "reused_existing_group_assignments": false,
+  "dataset_sha256": "cbb3cabf8249d351cdd3c86bb867e9e2059320009c36ed666ae505bec6c10aba",
+  "raw_data_sha256": "9d2d2201da6dd4de3e0ad986e101de894606984174a40053443f672a3d24a7ee",
+  "effective_config_sha256": "a0767a9287f1054c8668bfd72f2d8d008381f7b51c9ee45d793c5183364a26dd",
+  "preprocessing": {
+    "requested_spacy_model": "en_core_web_sm",
+    "actual_spacy_model": "core_web_sm",
+    "actual_spacy_version": "3.8.0",
+    "pipeline_components": [
+      "tok2vec",
+      "tagger",
+      "parser",
+      "attribute_ruler",
+      "lemmatizer",
+      "ner"
+    ],
+    "fuzzy_threshold": 0.78,
+    "fuzzy_fallback_threshold": 0.68,
+    "fuzzy_selection_policy": "best_window",
+    "max_fuzzy_window": 3,
+    "min_positive_annotators": 1
+  },
+  "environment": {
+    "python": "3.11.15",
+    "pandas": "3.0.1",
+    "numpy": "2.4.3",
+    "scikit-learn": "1.9.0",
+    "spacy": "3.8.14"
+  },
+  "split_diagnostics": {
+    "rows": {
+      "train": 2035,
+      "val": 429,
+      "test": 443
+    },
+    "group_overlap": {
+      "near_duplicate_group_id": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "response_id": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      },
+      "response_text_id": {
+        "train_val": 0,
+        "train_test": 0,
+        "val_test": 0
+      }
+    }
+  },
+  "test_is_model_selection_forbidden": true
+}
